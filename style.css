@@ -18,11 +18,11 @@ body {
 /* Banner */
 .banner {
     background-color: #373737;
-    color: #00FF00;
+    color: rgb(90, 145, 232);
     font-size: 24px;
     font-weight: bold;
     text-align: center;
-    border-bottom: 1px solid #00FF00;
+    border-bottom: 1px solid rgb(90, 145, 232);
 }
 
 /* Navigation */
@@ -34,7 +34,7 @@ nav {
     gap: 20px;
 }
 nav a {
-    color: #00FF00;
+    color: rgb(90, 145, 232);
     text-decoration: none;
     font-weight: bold;
 }
@@ -44,34 +44,50 @@ nav a:hover {
 
 /* Main Layout */
 .mainText {
+    max-width: 1000px;
     display: flex;
     flex-wrap: wrap;
     padding: 20px;
 }
 
-.main-content {
+
+
+.mainContent {
     flex: 3;
     padding: 20px;
     background: #2C2C2C;
     border-radius: 8px;
+
+
 }
 .sidebar {
     flex: 1;
     padding: 20px;
     background: #373737;
-    color: #00FF00;
+    color: rgb(90, 145, 232);
     border-radius: 8px;
     margin-left: 20px;
 }
+/*highlight the text to distinguish from sidebar above*/
+.choiceSidebar {
+    flex: 1;
+    padding: 20px;
+    background: #373737;
+    color: rgb(90, 145, 232);
+    border-radius: 8px;
+    margin-left: 1px;
+}
 
 /* Image Styling */
-.image-placeholder img {
+.imagePlaceholder img {
     width: 100%;
     height: auto;
-    max-width: 800px;
-    border-radius: 8px;
+    max-width: 1000px;
+    border-radius: 2px;
 }
-.sidebar .image-placeholder img {
+
+/*might need*/
+.sidebar .imagePlaceholder img {
     max-width: 300px;
     height: auto;
 }
@@ -79,7 +95,7 @@ nav a:hover {
 /* Footer */
 footer {
     background-color: #282828;
-    color: #00FF00;
+    color: rgb(90, 145, 232);
     text-align: center;
     padding: 15px;
     margin-top: 20px;
