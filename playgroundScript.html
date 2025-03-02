@@ -1,0 +1,74 @@
+<!--changing text via buttons-->
+
+<head>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <script type="text/javascript" src="../mybutton.js"></script>
+</head>
+<p id="gold">Hello World</p>
+<button type="button" id="jsClick">Don't Click</button>
+<button type="button" id="jsHeal">Heal My World</button>
+<script type="text/javascript">
+    window.onload = function () {
+        document.getElementById("jsClick").onclick = function () { document.getElementById("gold").innerHTML = "Please don't click"; };
+        document.getElementById("jsHeal").onclick = function () { document.getElementById("gold").innerHTML = "Hello World" };
+    }
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replace Content Example</title>
+</head>
+
+<body>
+    <div id="content">This is the original content.</div> <button id="replaceButton">Click me</button>
+    <script> // Select the button and content element
+        const button = document.getElementById('replaceButton'); const content = document.getElementById('content'); // Add event listener to the button button.addEventListener('click', function() { // Replace the HTML content inside the div content.innerHTML = 'The content has been replaced!'; }); </script>
+</body>
+
+</html>
+
+
+
+
+
+optionClick = 1;
+                    function hideOption() {
+                        //changes <p> text as well as button text. needs to change button function call
+                            
+                        switch (optionClick) {
+                            case 1:
+                                document.getElementById("choice").innerHTML = "You dip inside a cleaner closet, and you hear the guard pause outside...";
+                                document.getElementById("buttonOne").innerHTML = "wait...";
+                                document.getElementById("buttonTwo").innerHTML = "attack!";
+                                document.getElementById("buttonThree").innerHTML = "scratch bum";
+                                optionClick++;
+                                break;
+
+                            case 2:
+                                //wait option
+                             
+                            case 3:
+                                //attack option
+
+                            case 4:
+                                //scracth bum option, gives same outcome as case 2 but funny text   
+                        }
+
+                        function attackOption() {
+                            document.getElementById("choice").innerHTML = "You take the guard by surprise, and knock him down...";
+                            document.getElementById("buttonOne").innerHTML = "placeholder";
+                            document.getElementById("buttonTwo").innerHTML = "placeholder";
+                            document.getElementById("buttonThree").innerHTML = "placeholder";
+                        }
+    
+    
+                        function charmguard() {
+                            document.getElementById("choice").innerHTML = "The guard looks stunned at an inmate out of his cell, and takes out his baton...";
+                            document.getElementById("buttonOne").innerHTML = "placeholder";
+                            document.getElementById("buttonTwo").innerHTML = "placeholder";
+                            document.getElementById("buttonThree").innerHTML = "placeholder";
+                        }

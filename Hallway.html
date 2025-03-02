@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--This head contains info on how the web browser should interpret our code,
+    alongside linking our styling page and including our title.-->
+
+<head>
+    <link rel="stylesheet" href="Game.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escaping Crumlin Gaol</title>
+
+</head>
+
+
+
+
+<body>
+    <!--this wrapper is used to group the title and nav links to the top
+and also format the webpage so that it can have margins and also allow us to centre any objects -->
+    <div class="wrapper">
+        <div class="banner">
+            Welcome to Crumlin Road Gaol
+        </div>
+        <!--simple nav to get around the site-->
+        <!--REMEMBEER TO ADD LINKS HERE!!!!-->
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">More Games</a>
+
+        </nav>
+
+        <!--this contains the main text depending on the page, ie for intro the 'p' will change to fit the current narative -->
+        <!--EDIT H2 AND P HERE FOR EACH ROOM!-->
+        <!-- The code for this room has been written by Tim -->
+        <div class="topContent"> <!--This holds the top box content holding the image-->
+            <section class="image-content">
+                <h2 id="breakoutHeader">The Hallway</h2>
+                <!--INSERT PRISON HALLWAY IMAGE-->
+                <div class="image-placeholder"> <!--This is the image class any css to syle image use this class-->
+                    <img src="Tims Images/courtyard.jpg"
+                        alt="A Photo of a prison courtyard. Large open space with high walls">
+                </div>
+            </section>
+
+        </div>
+
+        <div class="bottomContent"> <!--This groups the flex box at the bottom with all the content inside-->
+            <section class="text-content" id="mainText"> <!--This the box on the left holding the main content-->
+                <h2>Hallway</h2>
+                <p id="choice">As you are sneaking to the courtyard, you hear a guards footsteps coming from around the
+                    next corner... <!--This paaragraph is what holds our text for our story-->
+                </p>
+            </section>
+
+            <aside class="sidebar"> <!--This groups the box on the right that will hold the choices-->
+                <h3>What would you like to do?</h3>
+                <h3>Choose Wisely!</h3>
+                <p>
+                <ol class="numSize"> <!--Ordered list of buttons to allow selction of choices-->
+                    <li><button class="button" id="buttonOne" type="button" role="hide"
+                            onclick="overseer('buttonOne')">Hide!</button></li> <!-- The role tags help with accessibility-->
+
+                    <li><button class="button" id="buttonTwo" type="button" role="attackGuard"
+                            onclick="overseer('buttonTwo')">Attack!</button></li>
+
+                    <li><button class="button" id="buttonThree" type="button" role="talk"
+                            onclick="overseer('buttonThree')">Charm</button></li>
+                </ol>
+
+                <script>
+                    //these define our functions and change the text in the narrative box 
+                    //depending on the users choice
+                    pHolder = 1;
+                    function overseer(button) {
+
+
+                        switch (button) {
+                            //this first case is to identify which button was clicked
+                            //case 1 is the hide action
+                            case 'buttonOne':
+                                //run through hide options
+
+
+                                //after pressing button 1 aka "hide";
+                                switch (pHolder) {
+                                    case 1:
+                                        //displays the new text and new options for choosing to hide
+                                        document.getElementById("choice").innerHTML = "You dip inside a cleaner closet, and you hear the guard pause outside...";
+                                        document.getElementById("buttonOne").innerHTML = "Wait..";
+                                        document.getElementById("buttonTwo").innerHTML = "Attack!";
+                                        document.getElementById("buttonThree").innerHTML = "Scratch bum";
+                                        //pHolder updates and is now at a value of 2
+                                        pHolder++;
+
+                                        break;
+
+
+                                    case 2:
+                                        //this is the outcome of choosing to "wait"
+                                        document.getElementById("choice").innerHTML = "You hear the guard walk off into the distance!";
+                                        document.getElementById("buttonOne").innerHTML = "Continue to the courtyard";
+                                        document.getElementById("buttonTwo").innerHTML = "Celebrate and continue!";
+                                        document.getElementById("buttonThree").innerHTML = "Sniff hand";
+                                        pHolder++;
+                                        break;
+
+                                    case 3:
+                                        //this is the outcome of choosing to continue to courtyard
+                                        //this next line should lead to the next room/page
+                                        
+                                        break;
+
+                                    case 4:
+                                        //this is for the outcome of charming the guard, button 1 ('compliment baton')
+
+                                    document.getElementById('choice').innerHTML = "You compliment the guard on his baton, and he looks at you with a confused expression. He looks unimpressed, and beats you to death."
+                                    pHolder == 9; //death screen case!
+                                    break;
+
+                                }
+
+
+
+
+                                break;
+
+
+                            //case 2 is the attack option
+                            case 'buttonTwo':
+                                //run through attack minigame
+                                switch (pHolder) {
+                                    //this is now the attacking minigame!
+                                    case 1:
+                                        document.getElementById("choice").innerHTML = "Minigame instance 1";
+                                    //call minigame function
+                                        break;
+
+
+                                    case 2:
+                                        document.getElementById("choice").innerHTML = "Minigame instance 2";
+                                        //call minigame function
+                                        break;
+
+                                    case 3:
+                                        document.getElementById("choice").innerHTML = "continue to live";
+                                        break;
+
+                                    case 4:
+                                    //outcome for charm, lie about why you are out
+                                     break;
+
+
+
+                                }
+                                break;
+                            //this is our charm 
+                            case 'buttonThree':
+                                //run through charm options
+                                switch (pHolder) {
+                                    case 1:
+                                        //charm
+                                        document.getElementById("choice").innerHTML = "The guard rounds the corner and looks stunned at an inmate out of his cell, and takes out his baton...";
+                                        document.getElementById("buttonOne").innerHTML = "Compliment his baton"; //ends in loss, gets beat
+                                        document.getElementById("buttonTwo").innerHTML = "Lie about why you are out"; //end in more dialogue options
+                                        document.getElementById("buttonThree").innerHTML = "Lie about fight in dining hall"; //ends in more dialogue options
+                                        //pHolder updates and is now at a value of 2
+                                        pHolder == 4;
+
+                                        break;
+
+                                    case 2:
+                                        //scratch bum
+                                        document.getElementById("choice").innerHTML = "Disgusting. You hear the guard walk off into the distance!";
+                                        document.getElementById("buttonOne").innerHTML = "Continue to the courtyard";
+                                        document.getElementById("buttonTwo").innerHTML = "Celebrate and continue!";
+                                        document.getElementById("buttonThree").innerHTML = "Sniff hand";
+                                        pHolder++;
+                                        break;
+
+                                    case 3:
+                                        //sniff
+                                        break;
+                                    
+                                    case 4:
+                                    //outcome for charm, lie about fight in dining hall
+                                    break;
+                                }break;
+                        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    }
+                //attack minigame. Needs to have a chance to proc after avoiding guard 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </script>
+
+
+
+                </p>
+            </aside>
+
+        </div>
+
+
+        <footer> <!--This holds the footer information at the bottom -->
+            <p>We hope you really enjoyed playing this game!</p>
+            <p>Creators: Jon Roberts, Tim Reid, Cahal Donnely, Declan McArdle, Rossa Mullen</p>
+        </footer>
+    </div>
+
+
+
+</body>
+
+</html>
