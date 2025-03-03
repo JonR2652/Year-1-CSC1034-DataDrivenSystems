@@ -75,6 +75,7 @@ and also format the webpage so that it can have margins and also allow us to cen
 
                     //sniff hand tracker for end of game- how many times u sniffed ur bum hand
                     //ponder is for the amount of times you questioned your decisions
+                    //pHolder designates what case inside of each button should be used
                     ponder =0;
                     sniff = 0;
                     pHolder = 1;
@@ -83,9 +84,9 @@ and also format the webpage so that it can have margins and also allow us to cen
 
                         switch (button) {
                             //this first case is to identify which button was clicked
-                            //case 1 is the hide action
+                            //each labelled 'buttonNo' to easily identify which button was clicked
                             case 'buttonOne':
-                                //run through hide options
+                                
 
 
                                 //after pressing button 1 aka "hide";
@@ -181,7 +182,7 @@ and also format the webpage so that it can have margins and also allow us to cen
 
                                 }
                                 break;
-                            //this is our charm 
+                            //this is my charm option
                             case 'buttonThree':
                                 //run through charm options
                                 switch (pHolder) {
