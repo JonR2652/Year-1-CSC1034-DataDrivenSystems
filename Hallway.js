@@ -179,8 +179,93 @@ function overseer(button) {
 }
 //attack minigame. Needs to have a chance to proc after avoiding guard 1
 
-function attackGuardMinigame(){
-    
+function attackGuardMinigame() {
+
+    //this is the attack minigame, directed to guardEncounter. 
+    //each button is named accordingly; Attack, Block and Item
+    //the minigame is turn-based, with the guard and player having 100hp
+    playerHp = 100;
+    guardHp = 100;
+    turn = 0;
+
+
+    //checks if either guard or players health is 0. if 0 end game
+    while (playerHp > 0 && guardHp > 0) {
+        if (turn == 0); {
+            //this is the players turn
+            //this switch statement checks which button was clicked and calls the relevant function
+            switch (button) {
+                case 'Attack':
+                    attack();
+                    turn = 1;
+                    break;
+
+                case 'Block':
+                    block();
+                    turn = 1;
+                    break;
+
+                case 'Item':
+                    item():
+                    turn = 1;
+                    break;
+            }
+
+
+
+        }
+
+
+
+
+
+
+
+        ifelse(playerHp <= 0); {
+            //end game you lose
+
+        }
+
+        ifelse(guardHp <= 0); {
+            //end minigame you win!
+        }
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function attack() {
+        
+        //this function will attack the guard, lowering his hp, and then the guard will have his turn
+        //the attack dealt will depend on whether the user has an item or not, with the most suitable item being used automatcially
+        //if item then do extra dmg, else do normal dmg
+    }
+
+    function block() {
+        //this function will block the guard attack, doing less damage
+
+    }
+
+    function item() {
+        //this function will use the selected healing / buff item 
+        //if no item, then "you have no items!" displays and turn ==1
+    }
+
+
 
 
 }
