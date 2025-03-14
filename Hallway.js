@@ -206,7 +206,7 @@ function attackGuardMinigame() {
                     break;
 
                 case 'Item':
-                    item():
+                    item();
                     turn = 1;
                     break;
             }
