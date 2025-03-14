@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Database Query Test</title>
+</head>
+
+<body>
+
+    <h1>Database Query Test</h1>
+    <form id="queryForm">
+        <label for="hostname">Hostname:</label>
+        <input type="text" id="hostname" name="hostname" value="localhost"><br><br>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" value=""><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" value=""><br><br>
+
+        <label for="database">Database:</label>
+        <input type="text" id="database" name="database" value=""><br><br>
+
+        <label for="query">SQL Query:</label>
+        <input id="query" name="query" value="SELECT * FROM testUsers"><br><br>
+
+        <button type="submit">Execute Query</button><br><br>
+    </form>
+
+    <div class="results" id="results"></div>
+
+    <script>
+            document.getElementById('queryForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            let hostname = document.getElementById('hostname').value;
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
+            let database = document.getElementById('database').value;
+            let query = document.getElementById('query').value;
+
+            // Create a URLSearchParams object to store form input values in a key-value format
+            let params = new URLSearchParams();
+            params.append('hostname', hostname);
+            params.append('username', username);
+            params.append('password', password);
+            params.append('database', database);
+            params.append('query', query);
+
+            console.log(params.toString());
+
+            executeDatabaseQuery(params);
+        });
+
+        async function executeDatabaseQuery(params) {
+            let url = 'https://jroberts15.webhosting1.eeecs.qub.ac.uk/dbConnector.php';
+            try {
+                let response = await fetch(url, {
+                    method: 'POST',
+                    body: params
+                }); // Waits for a response from the fetch
+
+
+                let result = await response.json(); // Waits for the JSON to be parsed
+
+                let resultsDiv = document.getElementById('results');
+                resultsDiv.innerHTML = '';
+
+                // If an error has been returned, e.g. incorrect SQL syntax, display the error
+                if (result.error) {
+                    console.log(result.error.toString());
+                    resultsDiv.innerHTML = `<p style="color:red;">${result.error}</p>`;
+                }
+                // If a dataset has been returned, e.g. from a SELECT statement, do something.
+                else if (result.data) {
+                    //In this case, print the dataset to a table using this method. 
+                    resultsDiv.innerHTML = createTableFromData(result.data);
+                }
+                else {
+                    // For anything else, assume something like INSERT, DROP etc. corresponding message
+                    resultsDiv.innerHTML = `<p>${result.success ? 'Query executed successfully' : 'No data returned'}</p>`;
+                    if (result.affected_rows !== undefined) {
+                        resultsDiv.innerHTML += `<p>Affected Rows: ${result.affected_rows}</p>`;
+                    }
+                }
+            } catch (error) {
+                console.error('Error parsing JSON:', error);
+                document.getElementById('results').innerHTML = `<p style="color:red;">Error: ${error.message}</p>`;
+            }
+        }
+
+
+
+        //This function prints a dynamic table structure based on the dataset passed.
+        function createTableFromData(data) {
+            if (!data.length) {
+                return `<p>No data available</p>`;
+            }
+            
+            //Object.keys extracts the key (variable) names
+            //This block prints the header row
+            let headers = Object.keys(data[0]);
+            let tableHTML = "<table border='1'>";
+            tableHTML += "<tr>";
+            for (let i = 0; i < headers.length; i++) {
+                tableHTML += `<th>${headers[i]}</th>`;
+            }
+            tableHTML += "</tr>";
+            
+            //This block prints the table data. 
+            //OUterloop interates through rows, inner loop through columns.             
+            for (let i = 0; i < data.length; i++) {
+                tableHTML += "<tr>";
+                for (let j = 0; j < headers.length; j++) {
+                    tableHTML += `<td>${data[i][headers[j]]}</td>`;
+                }
+                tableHTML += "</tr>";
+            }
+            
+            tableHTML += "</table>";
+            return tableHTML;
+        }
+    </script>
+</body>
+</html>
