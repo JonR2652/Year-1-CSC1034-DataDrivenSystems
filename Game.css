@@ -138,8 +138,17 @@ footer {
     border-width: 5px;
     border-color: rgb(74,73,55);
 }
-
-
+/* Inventory header */
+#inventoryHeader {
+    margin-top: 5px;
+    font-size: 30px;
+    text-decoration: underline;
+}
+/* Inventory styling */
+.inventory {
+    text-align: center;
+    padding: auto;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {

@@ -1,12 +1,13 @@
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-body { 
-    background-color: rgb(110,109,95); 
-    color: rgb(74,73,55); 
-    font-family: Arial, sans-serif; 
+
+body {
+    background-color: rgb(110, 109, 95);
+    color: rgb(74, 73, 55);
+    font-family: Arial, sans-serif;
 }
 
 /* Wrapper styling */
@@ -17,8 +18,8 @@ body {
 
 /* Banner */
 .banner {
-    background-color: rgb(74,73,55);
-    color: rgb(219,219,215);
+    background-color: rgb(74, 73, 55);
+    color: rgb(219, 219, 215);
     font-size: 50px;
     font-weight: bold;
     text-align: center;
@@ -27,18 +28,20 @@ body {
 
 /* Navigation Bar */
 nav {
-    background-color: rgb(120,120,95);
+    background-color: rgb(120, 120, 95);
     padding: 10px;
     display: flex;
     justify-content: center;
     gap: 20px;
     font-size: 30px;
 }
+
 nav a {
-    color: rgb(219,219,215);
+    color: rgb(219, 219, 215);
     text-decoration: none;
     font-weight: bold;
 }
+
 nav a:hover {
     text-decoration: underline dashed;
 }
@@ -46,13 +49,24 @@ nav a:hover {
 /* Top content including image */
 .topContent {
     padding: 20px;
-    text-align: center; 
+    text-align: center;
     margin: 30px;
-    background: rgb(219,219,215);
+    background: rgb(219, 219, 215);
     text-decoration: underline;
     border-style: solid;
     border-width: 5px;
-    border-color: rgb(74,73,55);
+    border-color: rgb(74, 73, 55);
+}
+/* Inventory header */
+#inventoryHeader {
+    margin-top: 5px;
+    font-size: 30px;
+    text-decoration: underline;
+}
+/* Inventory styling */
+.inventory {
+    text-align: center;
+    padding: auto;
 }
 
 /* Image styling */
@@ -60,12 +74,13 @@ nav a:hover {
     padding: 20px;
     border-radius: 8px;
 }
+
 .image-placeholder img {
     width: 100%;
     height: auto;
     border-style: solid;
     border-width: 1px;
-    border-color: rgb(74,73,55);
+    border-color: rgb(74, 73, 55);
 }
 
 /* Header above image */
@@ -79,9 +94,12 @@ nav a:hover {
     padding: 20px;
 }
 
-#enemyhp, #battleText, #playerhp ,#endscreen{
-   
-    font-family: Arial, sans-serif; 
+#enemyhp,
+#battleText,
+#playerhp,
+#endscreen {
+
+    font-family: Arial, sans-serif;
     color: rgb(0, 0, 0);
     width: 100%;
     padding: 15px;
@@ -94,11 +112,11 @@ nav a:hover {
 .text-content {
     padding: 20px;
     font-size: 30px;
-    background: rgb(219,219,215);
+    background: rgb(219, 219, 215);
     border-radius: 8px;
     border-style: solid;
     border-width: 5px;
-    border-color: rgb(74,73,55);
+    border-color: rgb(74, 73, 55);
     margin-bottom: 20px;
 }
 
@@ -106,10 +124,11 @@ nav a:hover {
 .button-box {
     padding: 20px;
     text-align: center;
-    background: rgb(219,219,215);
+    background: rgb(219, 219, 215);
     border-radius: 8px;
-    border: 5px solid rgb(74,73,55);
+    border: 5px solid rgb(74, 73, 55);
 }
+
 .button-box .button {
     font-size: 30px;
     margin: 5px;
@@ -117,15 +136,15 @@ nav a:hover {
 
 /* Footer */
 footer {
-    background-color: rgb(219,219,215);
-    color: rgb(74,73,55);
+    background-color: rgb(219, 219, 215);
+    color: rgb(74, 73, 55);
     text-align: center;
     padding: 15px;
     margin-bottom: 20px;
     margin-top: 20px;
     border-style: solid;
     border-width: 5px;
-    border-color: rgb(74,73,55);
+    border-color: rgb(74, 73, 55);
 }
 
 /* Responsive Design */
@@ -135,27 +154,33 @@ footer {
         flex-direction: column;
         align-items: center;
     }
+
     nav a:hover {
         text-decoration: underline;
     }
+
     .topContent {
         display: flex;
         flex-direction: column;
         align-items: center;
         padding: 10px;
     }
+
     .bottomContent {
         padding: 10px;
     }
+
     .text-content {
         padding: 10px;
-        background: rgb(219,219,215);
+        background: rgb(219, 219, 215);
         border-radius: 4px;
         font-size: larger;
     }
+
     .button-box {
         padding: 10px;
     }
+
     footer {
         display: flex;
         flex-direction: column;

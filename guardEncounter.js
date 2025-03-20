@@ -18,25 +18,25 @@ var defendBtn = document.getElementById("btnDefend");
 document.getElementById("battleText").innerHTML = "The guard is attacking you! What do you do?";
 
 //async is used to allow for a wait function
-function playerTurn(){
-    if(plHealth <= 0) {
+function playerTurn() {
+    if (plHealth <= 0) {
         lose();
-    } if (enHealth<=0){
+    } if (enHealth <= 0) {
         win();
     }
     document.getElementById("battleText").innerHTML = "Its your turn!";
 }
 
 async function enemyTurn() {
-    if(plHealth <= 0) {
+    if (plHealth <= 0) {
         lose();
-    } if (enHealth<=0){
+    } if (enHealth <= 0) {
         win();
     }
     console.log(turn); //debugging
     //chooses whether an enemy will attack or defend
     //math chooses between 0 or 1
-    
+
     var enemyChoice = Math.floor(Math.random() * 2);
     if (!turn && enemyChoice == 0) {
         //attack function
@@ -79,7 +79,7 @@ attackBtn.addEventListener('click', async function () {
             await delay(1000);
         }
         turn = false;
-        
+
     }
     enemyTurn();
 });
@@ -124,16 +124,23 @@ async function enemyGuard() {
     enemyTurn();
 }
 //delay function
-function delay(milliseconds){
+function delay(milliseconds) {
     return new Promise(resolve => {
         setTimeout(resolve, milliseconds);
     });
 }
 // leads to win/lose page
-function win(){
+function win() {
     location.replace("./win.html");
 }
 
-function lose(){
+function lose() {
     location.replace("./lose.html");
 }
+
+//PLAYER INVENTORY display
+
+
+
+
+
