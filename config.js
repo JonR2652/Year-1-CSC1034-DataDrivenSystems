@@ -4,4 +4,16 @@ let dbConfig = new URLSearchParams({
     username: 'jroberts15',
     password: 'wG4mlN7TtsbrBPbm',
     database: 'jroberts15',
+});
+
+//ASK ABOUT ALL THIS
+
+// Function to generate API request URLs dynamically
+function getDbUrl(action, params = {}) {
+    let url = `${dbConnectorUrl}?action=${action}`;
+    Object.keys(params).forEach(key => {
+        url += `&${key}=${params[key]}`;
     });
+    return url;
+}
+

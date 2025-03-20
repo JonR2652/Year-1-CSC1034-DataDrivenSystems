@@ -180,7 +180,49 @@ function overseer(button) {
 
 
 
+//GO OVER ALL OF THIS
+async function fetchPlayerInventory(playerID) {
+    try {
+        // Use the helper function from config.js to construct the URL
+        let response = await fetch(getDbUrl("getInventory", { playerID }));
+        let inventory = await response.json();
 
+        if (inventory.error) {
+            console.error("Error fetching inventory:", inventory.error);
+            document.getElementById("inventoryDisplay").innerHTML = "Error loading inventory.";
+            return;
+        }
+
+        console.log("Player Inventory:", inventory); // Debugging
+
+        // Display inventory
+        let inventoryDiv = document.getElementById("inventoryDisplay");
+        inventoryDiv.innerHTML = "<h3>Your Inventory:</h3>";
+
+        if (inventory.length === 0) {
+            inventoryDiv.innerHTML += "<p>You have no items.</p>";
+            return;
+        }
+
+        let itemList = "<ul>";
+        inventory.forEach(item => {
+            itemList += `<li>${item.ItemName} (Quantity: ${item.ItemQuantity})</li>`;
+        });
+        itemList += "</ul>";
+
+        inventoryDiv.innerHTML += itemList;
+
+    } catch (error) {
+        console.error("Error fetching inventory:", error);
+        document.getElementById("inventoryDisplay").innerHTML = "Failed to load inventory.";
+    }
+}
+
+// Load inventory when page loads
+document.addEventListener("DOMContentLoaded", () => {
+    let playerID = 1; // Replace with the actual player ID
+    fetchPlayerInventory(playerID);
+});
 
 
 

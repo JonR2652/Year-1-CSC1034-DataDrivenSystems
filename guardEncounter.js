@@ -140,6 +140,58 @@ function lose() {
 
 //PLAYER INVENTORY display
 
+let jsonItem = {
+    name: "",
+    quantity,
+}
+
+
+async function fetchPlayerInventory(playerID) {
+    try {
+        
+        let response = await fetch(`${dbConnectorUrl}?action=getInventory&playerID=${playerID}`);
+        let inventory = await response.json();
+
+        if (inventory.error) {
+            console.error("Error fetching inventory:", inventory.error);
+            document.getElementById("inventoryDisplay").innerHTML = "Error loading inventory.";
+            return;
+        }
+
+        console.log("Player Inventory:", inventory); // Debugging
+
+        // Display inventory in HTML
+        let inventoryDiv = document.getElementById("inventoryDisplay");
+        inventoryDiv.innerHTML = "<h3>Your Inventory:</h3>";
+
+        if (inventory.length === 0) {
+            inventoryDiv.innerHTML += "<p>You have no items.</p>";
+            return;
+        }
+
+        let itemList = "<ul>";
+        inventory.forEach(item => {
+            itemList += `<li>${item.ItemName} (Quantity: ${item.ItemQuantity})</li>`;
+        });
+        itemList += "</ul>";
+
+        inventoryDiv.innerHTML += itemList;
+
+    } catch (error) {
+        console.error("Error fetching inventory:", error);
+        document.getElementById("inventoryDisplay").innerHTML = "Failed to load inventory.";
+    }
+}
+
+// Run this when the page loads
+document.addEventListener("DOMContentLoaded", () => {
+    let playerID = 1; // Replace with the actual player ID
+    fetchPlayerInventory(playerID);
+});
+
+
+
+
 
 
 
