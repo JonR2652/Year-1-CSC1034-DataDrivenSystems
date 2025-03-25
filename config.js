@@ -8,7 +8,7 @@ let dbConfig = new URLSearchParams({
 
 //ASK ABOUT ALL THIS
 
-// Function to generate API request URLs dynamically
+// Function to generate API request URLs
 function getDbUrl(action, params = {}) {
     let url = `${dbConnectorUrl}?action=${action}`;
     Object.keys(params).forEach(key => {
@@ -16,4 +16,6 @@ function getDbUrl(action, params = {}) {
     });
     return url;
 }
+
+
 

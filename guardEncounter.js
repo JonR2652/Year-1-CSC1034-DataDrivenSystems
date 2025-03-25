@@ -1,3 +1,5 @@
+
+
 // Player variables
 var plHealth = 100;
 var plDamage = 20;
@@ -8,6 +10,8 @@ var turn = true;
 var enHealth = 100;
 var enDamage = 20;
 var enIsGuard = false;
+
+
 
 
 // Button constants
