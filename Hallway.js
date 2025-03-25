@@ -27,7 +27,7 @@ function overseer(button) {
                     document.getElementById("buttonThree").innerHTML = "Scratch bum";
                     //pHolder updates and is now at a value of 2
                     pHolder = 2;
-                    addItemToInventory(1, 4);
+                    
 
                     
 
@@ -85,7 +85,7 @@ function overseer(button) {
 
 
                 case 2:
-                    //mingiame
+                    //minigame
                     location.replace("guardEncounter.html");
                     break;
 
@@ -125,6 +125,7 @@ function overseer(button) {
                     document.getElementById("buttonThree").innerHTML = "Lie about fight in dining hall"; //ends in more dialogue options
                     //pHolder updates and is now at a value of 4
                     pHolder = 4;
+                   
 
 
                     break;
