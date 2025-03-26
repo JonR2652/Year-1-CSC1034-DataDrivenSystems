@@ -36,44 +36,162 @@
 
 
 optionClick = 1;
-                    function hideOption() {
-                        //changes <p> text as well as button text. needs to change button function call
-                            
-                        switch (optionClick) {
-                            case 1:
-                                document.getElementById("choice").innerHTML = "You dip inside a cleaner closet, and you hear the guard pause outside...";
-                                document.getElementById("buttonOne").innerHTML = "wait...";
-                                document.getElementById("buttonTwo").innerHTML = "attack!";
-                                document.getElementById("buttonThree").innerHTML = "scratch bum";
-                                optionClick++;
-                                break;
+function hideOption() {
+//changes <p> text as well as button text. needs to change button function call
 
-                            case 2:
-                                //wait option
-                             
-                            case 3:
-                                //attack option
+    switch (optionClick) {
+    case 1:
+    document.getElementById("choice").innerHTML = "You dip inside a cleaner closet, and you hear the guard pause
+    outside...";
+    document.getElementById("buttonOne").innerHTML = "wait...";
+    document.getElementById("buttonTwo").innerHTML = "attack!";
+    document.getElementById("buttonThree").innerHTML = "scratch bum";
+    optionClick++;
+    break;
 
-                            case 4:
-                                //scracth bum option, gives same outcome as case 2 but funny text   
-                        }
+    case 2:
+    //wait option
 
-                        function attackOption() {
-                            document.getElementById("choice").innerHTML = "You take the guard by surprise, and knock him down...";
-                            document.getElementById("buttonOne").innerHTML = "placeholder";
-                            document.getElementById("buttonTwo").innerHTML = "placeholder";
-                            document.getElementById("buttonThree").innerHTML = "placeholder";
-                        }
+    case 3:
+    //attack option
+
+    case 4:
+    //scracth bum option, gives same outcome as case 2 but funny text
+    }
+
+    function attackOption() {
+    document.getElementById("choice").innerHTML = "You take the guard by surprise, and knock him down...";
+    document.getElementById("buttonOne").innerHTML = "placeholder";
+    document.getElementById("buttonTwo").innerHTML = "placeholder";
+    document.getElementById("buttonThree").innerHTML = "placeholder";
+    }
+
+
+    function charmguard() {
+    document.getElementById("choice").innerHTML = "The guard looks stunned at an inmate out of his cell, and takes out
+    his baton...";
+    document.getElementById("buttonOne").innerHTML = "placeholder";
+    document.getElementById("buttonTwo").innerHTML = "placeholder";
+    document.getElementById("buttonThree").innerHTML = "placeholder";
+    }
+
+
+
+
+
+
+
+    // Function to generate API request URLs in config.js
+    function getDbUrl(action, params = {}) {
+    let url = `${dbConnectorUrl}?action=${action}`;
+    Object.keys(params).forEach(key => {
+    url += `&${key}=${params[key]}`;
+    });
+    return url;
+    }
+
+
+
+
+    async function runQuery() {
+        try {
+            const response = await fetch(dbConnectorUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: dbConfig
+            });
+    
+            const result = await response.json();
+    
+            if (result.error) {
+                console.error("SQL error:", result.error);
+            } else {
+                console.log("Query result:", result);
+            }
+    
+            return result;
+        } catch (error) {
+            console.error("Fetch error:", error);
+        }
+    
+    }
+    
+    async function testQuery() {
+        const query = `
+                  SELECT * FROM playerInventory
+                  WHERE PlayerID = 1
+                
+            `;
+    
+        await runQuery(query);
     
     
-                        function charmguard() {
-                            document.getElementById("choice").innerHTML = "The guard looks stunned at an inmate out of his cell, and takes out his baton...";
-                            document.getElementById("buttonOne").innerHTML = "placeholder";
-                            document.getElementById("buttonTwo").innerHTML = "placeholder";
-                            document.getElementById("buttonThree").innerHTML = "placeholder";
-                        }
+    }
+    //this is our function to add items to the inventory
+    async function addItemToInventory(playerID, itemID) {
+        const query = `
+                INSERT INTO playerInventory (PlayerID, ItemID)
+                VALUES (${playerID}, ${itemID})
+            `;
+    
+        await runQuery(query);
+    }
+    
+    async function removeItemFromInventory(playerID, itemID) {
+        const query = `
+                DELETE FROM playerInventory
+                WHERE PlayerID = ${playerID} AND ItemID = ${itemID}
+            `;
+        await runQuery(query);
+    }
+    
+    //async function giveKeycard() {
+    //  const playerID = 1;
+    //const itemID = 5;
+    //await addItemToInventory(playerID, itemID);
+    //await fetchPlayerInventory(playerID);
+    //}
+    
+    // example addItemToInventory(1, 7);
 
 
 
-
-                        
+EXAMPLE
+    async function fetchPlayerInventory(playerID) {
+        try {
+            // Use the helper function from config.js to constlet response = await fetch(getDbUrl("getInventory", { playerID }))ruct the URL
+            ;
+            let inventory = await response.json();
+    
+            if (inventory.error) {
+                console.error("Error fetching inventory:", inventory.error);
+                document.getElementById("inventoryDisplay").innerHTML = "Error loading inventory.";
+                return;
+            }
+    
+            console.log("Player Inventory:", inventory); // Debugging
+    
+            // Display inventory
+            let inventoryDiv = document.getElementById("inventoryDisplay");
+            inventoryDiv.innerHTML = "<h3>Your Inventory:</h3>";
+    
+            if (inventory.length === 0) {
+                inventoryDiv.innerHTML += "<p>You have no items.</p>";
+                return;
+            }
+    
+            let itemList = "<ul>";
+            inventory.forEach(item => {
+                itemList += `<li>${item.ItemName} )</li>`;
+            });
+            itemList += "</ul>";
+    
+            inventoryDiv.innerHTML += itemList;
+    
+        } catch (error) {
+            console.error("Error fetching inventory:", error);
+            document.getElementById("inventoryDisplay").innerHTML = "Failed to load inventory.";
+        }
+    }
