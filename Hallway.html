@@ -28,7 +28,7 @@ and also format the webpage so that it can have margins and also allow us to cen
             <a href="#">Home</a>
             <a href="#">About</a>
             <a href="#">More Games</a>
-
+            <button id="pauseButton" type="button">Pause</button>
         </nav>
 
         <!--this contains the main text depending on the page, ie for intro the 'p' will change to fit the current narative -->
@@ -79,23 +79,47 @@ and also format the webpage so that it can have margins and also allow us to cen
 
         </div>
 
-        
-        <div class="bottomContent inventoryDisplay" > <!--This adds a box at the bottom for inventory-->
+
+        <div class="bottomContent"> <!--This adds a box at the bottom for inventory-->
             <section class="text-content"> <!--This the box on the left holding the main content-->
                 <h2 id="inventoryHeader">Inventory</h2>
-              
                 <p id="items"></p> <!--This paragraph is what holds our inventory items-->
-            </div>
-        <footer> <!--This holds the footer information at the bottom -->
-                    <p>We hope you really enjoyed playing this game!</p>
-                    <p>Creators: Jon Roberts, Tim Reid, Cahal Donnely, Declan McArdle, Rossa Mullen</p>
-        </footer>
         </div>
+        <footer> <!--This holds the footer information at the bottom -->
+            <p>We hope you really enjoyed playing this game!</p>
+            <p>Creators: Jon Roberts, Tim Reid, Cahal Donnely, Declan McArdle, Rossa Mullen</p>
+        </footer>
+        <div id="pauseMenu" class="hidden" ?>
+            <div class="pauseContainer">
+                <h2>Game Paused</h2>
+                <button id="resumeButton">Resume</button>
+                <button id="exitSaveButton">Exit & Save</button>
+                <div class="accessibilityFeatures">
+                    <!--This holds the top left box content for all the accessibility features-->
+                    <section class="buttons"> <!--This holds the buttons section for user to change certain aspects-->
+                        <h2 id="accessibilityHeader">To change certain features, </h2>
+                        <h2 id="accessibilityHeader">please select from the list below:</h2>
+                        <button class="button" type="button" id="increaseTextSize">Increase Text Size</button>
+                        <br>
+                        <button class="button" type="button" id="decreaseTextSize">Decrease Text Size</button>
+                        <br>
+                        <button class="button" type="button" id="changeContrast">Change Contrast</button>
+                        <br>
+                        <button class="button" type="button" id="changeFontStyle">Change Font Style</button>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>    
 
 
-        <script src="Hallway.js"></script>
-        <script src="inventory.js"></script>
-        <script src="config.js"></script>
+    
+
+
+    <script src="Hallway.js"></script>
+    <script src="inventory.js"></script>
+    <script src="config.js"></script>
+    <script src="accessibility-3.js"></script>
 </body>
 
 </html>

@@ -33,36 +33,59 @@
                 <h2>Hallway</h2>
                 <p id="battleText">
                     The minigame has begun! It's your turn- Choose wisely
-                </p> 
+                </p>
                 <div id="playerhp">Player Health:100</div>
                 <div id="enemyhp">Enemy Health:100</div>
-                
+
             </section>
             <section class="button-box">
-                <button class="button" id="btnAttack" type="button" >Attack</button>
-                <button class="button" id="btnDefend" type="button" >Block</button>
-                <button class="button" id="btnItem" type="button" >Item</button>
-                
-            </section>
-        </div>
-        
-        
-        <!--INVENTORY BOX-->
-        <div class="bottomContent"> <!--This adds a box at the bottom for inventory-->
-            <section class="text-content"> <!--This the box on the left holding the main content-->
-            <h2 id="inventoryHeader">Inventory</h2>
-            <p id="inventoryDisplay"></p> <!--This paragraph is what holds our inventory items-->
+                <button class="button" id="btnAttack" type="button">Attack</button>
+                <button class="button" id="btnDefend" type="button">Block</button>
+                <button class="button" id="btnItem" type="button">Item</button>
+
             </section>
 
-            
-        <footer>
-            <p>We hope you really enjoyed playing this game!</p>
-            <p>Creators: Jon Roberts, Tim Reid, Cahal Donnely, Declan McArdle, Rossa Mullen</p>
-        </footer>
+
+
+            <!--INVENTORY BOX-->
+           
+            <section class="text-content"> <!--This the box on the left holding the main content-->
+                <h2 id="inventoryHeader">Inventory</h2>
+                <p id="items"></p> 
+                
+        </div>
+        
+
     </div>
+    <footer>
+        <div id="pauseMenu" class="hidden" ?>
+            <div class="pauseContainer">
+                <h2>Game Paused</h2>
+                <button id="resumeButton">Resume</button>
+                <button id="exitSaveButton">Exit & Save</button>
+                <div class="accessibilityFeatures">
+                    <!--This holds the top left box content for all the accessibility features-->
+                    <section class="buttons"> <!--This holds the buttons section for user to change certain aspects-->
+                        <h2 id="accessibilityHeader">To change certain features, </h2>
+                        <h2 id="accessibilityHeader">please select from the list below:</h2>
+                        <button class="button" type="button" id="increaseTextSize">Increase Text Size</button>
+                        <br>
+                        <button class="button" type="button" id="decreaseTextSize">Decrease Text Size</button>
+                        <br>
+                        <button class="button" type="button" id="changeContrast">Change Contrast</button>
+                        <br>
+                        <button class="button" type="button" id="changeFontStyle">Change Font Style</button>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <p>We hope you really enjoyed playing this game!</p>
+        <p>Creators: Jon Roberts, Tim Reid, Cahal Donnely, Declan McArdle, Rossa Mullen</p>
+    </footer>
     <script src="guardEncounter.js"></script>
     <script src="inventory.js"></script>
     <script src="config.js"></script>
+    <script src="accessibility-3.js"></script>
 </body>
 
 </html>

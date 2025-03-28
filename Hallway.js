@@ -27,7 +27,8 @@ function overseer(button) {
                     document.getElementById("buttonThree").innerHTML = "Scratch bum";
                     //pHolder updates and is now at a value of 2
                     pHolder = 2;
-                    removeItemFromInventory();
+                    
+                    
                
 
                     
@@ -55,15 +56,27 @@ function overseer(button) {
                 case 4:
                     //this is for the outcome of charming the guard, button 1 ('compliment baton')
 
-                    document.getElementById('choice').innerHTML = "You compliment the guard on his baton, and he looks at you with a confused expression."
-                    document.getElementById("buttonOne").innerHTML = "option1";
-                    document.getElementById("buttonTwo").innerHTML = "option2";
-                    document.getElementById("buttonThree").innerHTML = "option3";
+                    document.getElementById('choice').innerHTML = "You compliment the guard on his baton, and he looks at you with a confused expression. Time for a fight..."
+                    document.getElementById("buttonOne").innerHTML = "";
+                    document.getElementById("buttonTwo").innerHTML = "";
+                    document.getElementById("buttonThree").innerHTML = "";
+                    delay(4000).then(() => {
+                        //this goes to next area
+                        location.replace("guardEncounter.html");
+                    });
                     break;
 
                 case 5:
                     //alternate escape after sniffing hand
                     break;
+
+            
+                case 6:
+                    document.getElementById('choice').innerHTML = "It might be over for you now...attack!"
+                    delay(4000).then(() => {
+                        //this goes to next area
+                        location.replace("guardEncounter.html");
+                    });
 
 
             }
@@ -92,6 +105,7 @@ function overseer(button) {
 
                 case 3:
                     //escpape to next area
+                        //locationreplace("");
                     break;
 
                 case 4:
@@ -100,6 +114,7 @@ function overseer(button) {
                     document.getElementById("buttonOne").innerHTML = "Argue";
                     document.getElementById("buttonTwo").innerHTML = "Co-operate";
                     document.getElementById("buttonThree").innerHTML = "Attack";
+                    pHolder = 6;
                     break;
 
                 case 5:
@@ -108,9 +123,11 @@ function overseer(button) {
 
                     break;
 
+                case 6:
+                    //back to the cell to try again/ game over
+                    //locationreplace("");
 
-
-
+                    break;
 
             }
             break;
@@ -154,14 +171,25 @@ function overseer(button) {
 
                 case 4:
                     //outcome for lying about a fight in the dining hall
-                    document.getElementById("choice").innerHTML = "The guard rushes off, 'You better not be lying!'";
-                    document.getElementById("buttonOne").innerHTML = "option1";
-                    document.getElementById("buttonTwo").innerHTML = "option2";
-                    document.getElementById("buttonThree").innerHTML = "option3";
+                    document.getElementById("choice").innerHTML = "The guard rushes off, 'You better not be lying!";
+                    document.getElementById("buttonOne").innerHTML = "";
+                    document.getElementById("buttonTwo").innerHTML = "";
+                    document.getElementById("buttonThree").innerHTML = "";
+                    ponder++;
+                    delay(4000).then(() => {
+                        //this goes to next area
+                        location.replace("guardEncounter.html");
+                    });
+                  
+
+                    
+
+
                     break;
 
                 case 5:
                     //outcome for charm, lie about fight in dining hall
+                 
                     document.getElementById("choice").innerHTML = "Really? You hear the guard walk off into the distance! YOU SHOULD LEAVE";
                     document.getElementById("buttonOne").innerHTML = "Continue to the courtyard";
                     document.getElementById("buttonTwo").innerHTML = "Celebrate and continue!";
@@ -169,10 +197,14 @@ function overseer(button) {
                     sniff++;
                     pHolder = 5;
                     console.log(sniff);
+                    break;
 
-
-
-
+                case 6:
+                    document.getElementById('choice').innerHTML = "It might be over for you now...attack!"
+                    delay(4000).then(() => {
+                        //this goes to next area
+                        location.replace("guardEncounter.html");
+                    });
                     break;
 
 
@@ -181,6 +213,11 @@ function overseer(button) {
 
 
 
+}
+function delay(milliseconds) {
+    return new Promise(resolve => {
+        setTimeout(resolve, milliseconds);
+    });
 }
 
 
