@@ -1,11 +1,14 @@
+<!-- The page below was created by Timothy Reid -->
+<!-- This is my own work but I did use help from w3schools to create the login forms -->
+
 <!DOCTYPE html>
 <html lang="en">
 <!--This head contains info on how the web browser should interpret our code,
     alongside linking our styling page and including our title.-->
 
 <head>
-
-    <link rel="stylesheet" href="GameT.css">
+    <link rel="stylesheet" href="Game.css">
+    <link rel="stylesheet" href="highContrast.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escaping Crumlin Gaol</title>
@@ -25,10 +28,12 @@ and also format the webpage so that it can have margins and also allow us to cen
         <!--simple nav to get around the site-->
         <!--REMEMBEER TO ADD LINKS HERE!!!!-->
         <nav>
-            <a href="#">Home</a>
+            <a href="Homepage.html">Home</a>
             <a href="#">About</a>
-            <a href="#">More Games</a>
-            <button id="pauseButton" type="button">Pause</button>
+            <a href="Coming Soon.html">More Games</a>
+            <button id="pauseButton">Menu</button>
+
+
         </nav>
 
         <!--this contains the main text depending on the page, ie for intro the 'p' will change to fit the current narative -->
@@ -36,68 +41,48 @@ and also format the webpage so that it can have margins and also allow us to cen
         <!-- The code for this room has been written by Tim -->
         <div class="topContent"> <!--This holds the top box content holding the image-->
             <section class="image-content">
-                <h2 id="breakoutHeader">The Hallway</h2>
-                <!--INSERT PRISON HALLWAY IMAGE-->
+                <h2 id="breakoutHeader">Home</h2>
                 <div class="image-placeholder"> <!--This is the image class any css to syle image use this class-->
-                    <img src="Tims Images/courtyard.jpg"
-                        alt="A Photo of a prison courtyard. Large open space with high walls">
+                    <video id="welcomeVideo" autoplay muted controls>
+                        <source src="Tims Images/10475370-hd_2048_1080_25fps.mp4" type="video/mp4">
+                        <!--Video from Pexels-->
+                        Your browser does not support the video format.
+                    </video>
                 </div>
             </section>
 
         </div>
 
         <div class="bottomContent"> <!--This groups the flex box at the bottom with all the content inside-->
-            <section class="text-content" id="mainText"> <!--This the box on the left holding the main content-->
-                <!--added id text header-->
-                <h2 id="textHeader">Hallway</h2>
-                <p id="choice">As you are sneaking to the courtyard, you hear a guards footsteps coming from around the
-                    next corner... <!--This paaragraph is what holds our text for our story-->
-                </p>
+            <section class="homeContent"> <!--This box now holds all the content in the centre -->
+                <h2>Home</h2>
+                <h3 style="font-size: 25px;">Welcome <span id="loginUser"></span></h3>
+
+                <ul id="welcomeList">
+                    <li><button class="button" id="newGameButton" type="button" role="Start New Game">New
+                            Game</button>
+                    </li>
+                    <li><button class="button" id="newGameButton" type="button" role="Resume Previous Game">Resume
+                            Game</button></li>
+                    <li><button class="button" id="pauseButton" type="button" role="Accessebility">Settings</button>
+                    </li>
+                </ul>
             </section>
-
-            <aside class="sidebar"> <!--This groups the box on the right that will hold the choices-->
-                <h3>What would you like to do?</h3>
-                <h3>Choose Wisely!</h3>
-                <p>
-                <ol class="numSize"> <!--Ordered list of buttons to allow selction of choices-->
-                    <li><button class="button" id="buttonOne" type="button" role="hide"
-                            onclick="overseer('buttonOne')">Hide!</button></li>
-                    <!-- The role tags help with accessibility-->
-
-                    <li><button class="button" id="buttonTwo" type="button" role="attackGuard"
-                            onclick="overseer('buttonTwo')">Attack!</button></li>
-
-                    <li><button class="button" id="buttonThree" type="button" role="talk"
-                            onclick="overseer('buttonThree')">Charm</button></li>
-                </ol>
-
-
-
-
-
-                </p>
-            </aside>
 
         </div>
 
 
-        <div class="bottomContent"> <!--This adds a box at the bottom for inventory-->
-            <section class="text-content"> <!--This the box on the left holding the main content-->
-                <h2 id="inventoryHeader">Inventory</h2>
-                <p id="items"></p> <!--This paragraph is what holds our inventory items-->
-            </section>
-            <footer class="sidebar"> <!--This holds the footer information at the bottom -->
-                <p>We hope you really enjoyed playing this game!</p>
-                <p>Creators: Jon Roberts, Tim Reid, Cahal Donnely, Declan McArdle, Rossa Mullen</p>
-            </footer>
 
-        </div>
+
+        <footer> <!--This holds the footer information at the bottom -->
+            <p>We hope you really enjoyed playing this game!</p>
+            <p>Creators: Jon Roberts, Tim Reid, Cahal Donnely, Declan McArdle, Rossa Mullen</p>
+        </footer>
 
         <div id="pauseMenu" class="hidden" ?>
             <div class="pauseContainer">
-                <h2>Game Paused</h2>
+                <h2>Menu</h2>
                 <button id="resumeButton">Resume</button>
-                <button id="exitSaveButton">Exit & Save</button>
                 <div class="accessibilityFeatures">
                     <!--This holds the top left box content for all the accessibility features-->
                     <section class="buttons"> <!--This holds the buttons section for user to change certain aspects-->
@@ -114,18 +99,15 @@ and also format the webpage so that it can have margins and also allow us to cen
                 </div>
             </div>
         </div>
+
     </div>
 
-
-
-
-
-    <script src="Hallway.js"></script>
-    <script src="inventory.js"></script>
     <script src="config.js"></script>
-    <script src="accessibility-3.js"></script>
+    <script src="homepage.js"></script>
     <script src="pauseButton.js"></script>
-    <script></script>
+    <script src="accessibility-3.js"></script>
+
+
 </body>
 
 </html>

@@ -120,11 +120,6 @@ nav a:hover {
     text-align: center;
 }
 
-#suspicionLevel {
-    color: red;
-    font-weight: bold;
-}
-
 /* styling of content within sidebar */
 .button {
     width: 200px;
@@ -158,26 +153,6 @@ li {
     border-color: rgb(74, 73, 55);
 }
 
-/* Flashing text for urgency or when caught */
-/* Used Generative AI to help me and enhance  my work with the visuals of the page with the flash effect */
-@keyframes flash {
-    0% {
-        color: red;
-    }
-
-    50% {
-        color: blue;
-    }
-
-    100% {
-        color: red;
-    }
-}
-
-.flash {
-    animation: flash 0.5s infinite;
-}
-
 #textHeader {
     margin-top: 5px;
     font-size: 30px;
@@ -188,10 +163,7 @@ li {
     margin-top: 5px;
     font-size: 30px;
     text-decoration: underline;
-}
-
-#text {
-    font-size: 35px;
+  
 }
 
 #choice {
@@ -201,6 +173,7 @@ li {
 .inventory {
     text-align: center;
     padding: auto;
+
 }
 
 /* For the Home Page */
@@ -305,6 +278,8 @@ footer {
     color: rgb(74, 73, 55);
     text-align: center;
     padding: 15px;
+    margin-bottom: 20px;
+    margin-top: 20px;
     border-style: solid;
     border-width: 5px;
     border-color: rgb(74, 73, 55);

@@ -4,8 +4,8 @@
     alongside linking our styling page and including our title.-->
 
 <head>
-
-    <link rel="stylesheet" href="GameT.css">
+    <link rel="stylesheet" href="Game.css">
+    <link rel="stylesheet" href="highContrast.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escaping Crumlin Gaol</title>
@@ -25,10 +25,11 @@ and also format the webpage so that it can have margins and also allow us to cen
         <!--simple nav to get around the site-->
         <!--REMEMBEER TO ADD LINKS HERE!!!!-->
         <nav>
-            <a href="#">Home</a>
+            <a href="Homepage.html">Home</a>
             <a href="#">About</a>
-            <a href="#">More Games</a>
-            <button id="pauseButton" type="button">Pause</button>
+            <a href="Coming Soon.html">More Games</a>
+            <button id="pauseButton">Pause</button>
+
         </nav>
 
         <!--this contains the main text depending on the page, ie for intro the 'p' will change to fit the current narative -->
@@ -36,61 +37,53 @@ and also format the webpage so that it can have margins and also allow us to cen
         <!-- The code for this room has been written by Tim -->
         <div class="topContent"> <!--This holds the top box content holding the image-->
             <section class="image-content">
-                <h2 id="breakoutHeader">The Hallway</h2>
-                <!--INSERT PRISON HALLWAY IMAGE-->
+                <h2 id="breakoutHeader">The Breakout</h2>
                 <div class="image-placeholder"> <!--This is the image class any css to syle image use this class-->
-                    <img src="Tims Images/courtyard.jpg"
+                    <img id="topImage" src="Tims Images/courtyard.jpg"
                         alt="A Photo of a prison courtyard. Large open space with high walls">
-                </div>
+                </div> <!--Image from Pexels-->
             </section>
 
         </div>
 
         <div class="bottomContent"> <!--This groups the flex box at the bottom with all the content inside-->
-            <section class="text-content" id="mainText"> <!--This the box on the left holding the main content-->
-                <!--added id text header-->
-                <h2 id="textHeader">Hallway</h2>
-                <p id="choice">As you are sneaking to the courtyard, you hear a guards footsteps coming from around the
-                    next corner... <!--This paaragraph is what holds our text for our story-->
-                </p>
+            <section class="text-content"> <!--This the box on the left holding the main content-->
+                <h2 id="textHeader">Courtyard</h2>
+                <p id="text">Text-placeholder</p> <!--This paaragraph is what holds our text for our story-->
+                <audio id="sirenSound" src="Tims Images/siren.mp3" preload="auto"></audio>
             </section>
 
             <aside class="sidebar"> <!--This groups the box on the right that will hold the choices-->
-                <h3>What would you like to do?</h3>
-                <h3>Choose Wisely!</h3>
+                <h2>What would you like to do?</h2>
+                <span id="suspicionLevel">Suspicion Level: 0</span>
                 <p>
                 <ol class="numSize"> <!--Ordered list of buttons to allow selction of choices-->
-                    <li><button class="button" id="buttonOne" type="button" role="hide"
-                            onclick="overseer('buttonOne')">Hide!</button></li>
+                    <li id="remove1"><button class="button" id="button1" type="button"
+                            role="choice selector">text</button></li>
                     <!-- The role tags help with accessibility-->
-
-                    <li><button class="button" id="buttonTwo" type="button" role="attackGuard"
-                            onclick="overseer('buttonTwo')">Attack!</button></li>
-
-                    <li><button class="button" id="buttonThree" type="button" role="talk"
-                            onclick="overseer('buttonThree')">Charm</button></li>
+                    <li id="remove2"><button class="button" id="button2" type="button"
+                            role="choice selector">text</button></li>
+                    <li id="remove3"><button class="button" id="button3" type="button"
+                            role="choice selector">text</button></li>
                 </ol>
-
-
-
-
 
                 </p>
             </aside>
 
         </div>
 
-
         <div class="bottomContent"> <!--This adds a box at the bottom for inventory-->
             <section class="text-content"> <!--This the box on the left holding the main content-->
                 <h2 id="inventoryHeader">Inventory</h2>
-                <p id="items"></p> <!--This paragraph is what holds our inventory items-->
+                <p id="items"></p> <!--This paaragraph is what holds our text for our story-->
             </section>
+
+
             <footer class="sidebar"> <!--This holds the footer information at the bottom -->
                 <p>We hope you really enjoyed playing this game!</p>
-                <p>Creators: Jon Roberts, Tim Reid, Cahal Donnely, Declan McArdle, Rossa Mullen</p>
+                <br>
+                <p>Creators: Jon Roberts, Tim Reid, Cahal Donnely, Declan McArdle, Rossa Mullan</p>
             </footer>
-
         </div>
 
         <div id="pauseMenu" class="hidden" ?>
@@ -114,18 +107,18 @@ and also format the webpage so that it can have margins and also allow us to cen
                 </div>
             </div>
         </div>
+
+
     </div>
 
-
-
-
-
-    <script src="Hallway.js"></script>
+    <script src="breakout.js"></script>
     <script src="inventory.js"></script>
+    <script src="pauseButton.js"></script>
     <script src="config.js"></script>
     <script src="accessibility-3.js"></script>
-    <script src="pauseButton.js"></script>
-    <script></script>
+
+
+
 </body>
 
 </html>
