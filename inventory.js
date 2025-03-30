@@ -1,15 +1,8 @@
-//GO OVER ALL OF THIS
-//this whole file needs to fetch the playerID from the sessionID
-
-
-//All following functions take the parameter of playerID to identify which player inventory to target.
-
-
-//this function gets the playerID from the sessionID via the sessionlog
-//it returns the 
 
 
 
+//this function grabs the playerID from the session storage and returns it.
+//this is to target the correct player when managin inventory
 async function getPlayerID() {
     let playerID = sessionStorage.getItem("PlayerID"); // Get PlayerID from session storage
     if (playerID) {
@@ -20,26 +13,21 @@ async function getPlayerID() {
     }
 }
 
-//inventory not linked
 
 
 
 
 
-
-
-
-
-
-//this function displays the inevntory of the player.
-//it grabs playerId from the getPlayerId function and uses it to query the db for the player's inventory
+//this function displays the players inventory
 async function displayInventory() {
+    //calls getPlayerID to get the playerID and display the correct inventory
     const playerID = await getPlayerID();
-
-    if (!playerID){
+    //if the playerID is not found, push error message
+    if (!playerID) {
         console.error("PlayerID not be found.");
         return;
     }
+    //query the databse for all the items in the current player's inventory
     let sqlQuery = `SELECT * FROM playerInventory 
                     JOIN itemInfo ON playerInventory.ItemID = itemInfo.ItemID
                     WHERE playerID = ${playerID}`;
@@ -64,7 +52,7 @@ async function displayInventory() {
             items.innerHTML += "<p>You have no items.</p>";
             return;
         }
-
+        //update the item list with item.itemName. Iterates over the inventory to do this
         let itemList = "<ul>";
         result.data.forEach(item => {
             itemList += `<li>${item.ItemName} </li>`;
@@ -84,9 +72,7 @@ async function displayInventory() {
 
 
 
-//add in parameter "playerID" and change VALUES / WHERE TO ${playerID}
-//FOR debug purposes, i am using playerID = 1
-// Load inventory and get player id when page loads
+// Load inventory when the page loads. This grabs the playerID from session storage in the displayInventory function
 document.addEventListener("DOMContentLoaded", () => {
     displayInventory();
 
@@ -98,8 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-//add in parameter "playerID" and change VALUES / WHERE TO ${playerID}
-//FOR debug purposes, i am using playerID = 1
+//debug purposes only, tests connection to db
 async function testQuery() {
 
 
@@ -130,20 +115,20 @@ async function testQuery() {
 
 
 
-
-
-//add in parameter "playerID" and change VALUES / WHERE TO ${playerID}
-//FOR debug purposes, i am using playerID = 1
+//this function is to add items into a player's inventory
+//takes a parameter itemID to choose which item to add
+// example call; addItemToInventory(1);
 async function addItemToInventory(itemID) {
-   let playerID = await getPlayerID();
+    //check if player exists
+    let playerID = await getPlayerID();
     if (!playerID) {
         console.error("PlayerID cannot be found.");
         return;
     }
-   
-   
+
+    //inserts the item into the current player's inventory
     let sqlQuery = `INSERT INTO playerInventory (PlayerID,ItemID) VALUES (${playerID}, ${itemID})`;
-   
+
     dbConfig.set('query', sqlQuery);
 
     try {
@@ -159,7 +144,6 @@ async function addItemToInventory(itemID) {
     }
 }
 
-// addItemToInventory(4);
 
 
 
@@ -169,19 +153,19 @@ async function addItemToInventory(itemID) {
 
 
 
-//takes the parameter of playerID to identify which player inventory to target.
-//add in parameter "playerID" and change VALUES / WHERE TO ${playerID}
-//FOR debug purposes, i am using playerID = 1
 
-
+//this function is to remove items from a player's inventory
+//takes a parameter itemID to choose which item to remove
+// example call; removeItemFromInventory(1);
 async function removeItemFromInventory(itemID) {
+       //check if player exists
     let playerID = await getPlayerID();
     if (!playerID) {
         console.error("PlayerID cannot be found.");
         return;
     }
-   
-   
+
+
     let sqlQuery = `DELETE FROM playerInventory WHERE playerID = ${playerID} AND itemID = ${itemID}`;
 
     dbConfig.set('query', sqlQuery);
@@ -199,10 +183,16 @@ async function removeItemFromInventory(itemID) {
     }
 }
 
-
-// this function takes playerid from get player id function and checks if the player has the item in their inventory.
-//if the player has te item, it return true. otherwise it returns false. 
+//function to check if a player has the desired item.
+//uses the parameter itemID to check for the desired item
+//if the player has the item, it return true. otherwise it returns false. 
 async function checkForItem(itemID) {
+    //check if player exists
+    let playerID = await getPlayerID();
+    if (!playerID) {
+        console.error("PlayerID cannot be found.");
+        return;
+    }
     let sqlQuery = `SELECT * FROM playerInventory WHERE playerID =
                     ${playerID} AND itemID = ${itemID}`;
 

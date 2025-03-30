@@ -1,12 +1,11 @@
 
-//these define our functions and change the text in the narrative box 
-//depending on the users choice
-
-//sniff hand tracker for end of game- how many times u sniffed ur bum hand
-//ponder is for the amount of times you questioned your decisions
+//sniffhand and ponder are easter egg trackers. Sniff hand counts how many times the user has sniffed their hand
+//ponder is a one time activation
 ponder = 0;
 sniff = 0;
 pHolder = 1;
+
+//function to call overseer() to run code.
 function overseer(button) {
 
 
@@ -14,7 +13,7 @@ function overseer(button) {
         //this first case is to identify which button was clicked
         //case 1 is the hide action
         case 'buttonOne':
-            //run through hide options
+            
 
 
             //after pressing button 1 aka "hide";
@@ -50,6 +49,10 @@ function overseer(button) {
                 case 3:
                     //this is the outcome of choosing to continue to courtyard
                     //escpae to next area
+                    delay(4000).then(() => {
+                        //this goes to next area
+                        location.replace(".html");
+                    });
 
                     break;
 
@@ -68,6 +71,10 @@ function overseer(button) {
 
                 case 5:
                     //alternate escape after sniffing hand
+                    delay(4000).then(() => {
+                        //this goes to next area
+                        location.replace(".html");
+                    });
                     break;
 
             
@@ -106,6 +113,10 @@ function overseer(button) {
                 case 3:
                     //escpape to next area
                         //locationreplace("");
+                        delay(4000).then(() => {
+                            //this goes to next area
+                            location.replace(".html");
+                        });
                     break;
 
                 case 4:
@@ -119,7 +130,10 @@ function overseer(button) {
 
                 case 5:
                     //alternate escape after sniffing hand
-
+                    delay(4000).then(() => {
+                        //this goes to next area
+                        location.replace(".html");
+                    });
 
                     break;
 
@@ -203,7 +217,7 @@ function overseer(button) {
                     document.getElementById('choice').innerHTML = "It might be over for you now...attack!"
                     delay(4000).then(() => {
                         //this goes to next area
-                        location.replace("guardEncounter.html");
+                        location.replace(".html");
                     });
                     break;
 
@@ -214,6 +228,7 @@ function overseer(button) {
 
 
 }
+//delay function before moving to next area
 function delay(milliseconds) {
     return new Promise(resolve => {
         setTimeout(resolve, milliseconds);
