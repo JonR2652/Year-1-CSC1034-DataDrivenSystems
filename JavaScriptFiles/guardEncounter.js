@@ -27,7 +27,7 @@ function playerTurn() {
     } if (enHealth <= 0) {
         win();
     }
-    document.getElementById("battleText").innerHTML = "Its your turn!";
+    document.getElementById("battleText").innerHTML = "It's your turn!";
 }
 
 async function enemyTurn() {
@@ -63,129 +63,113 @@ async function enemyTurn() {
 // 1 2 3
 //if returns 1 you lost
 //returns 2 you win
-    function isGameOver(){
+function isGameOver() {
     if (plHealth <= 0) {
         lose();
-        return 1;
-    } if (enHealth <= 0) {
+        return true;
+    } 
+    if (enHealth <= 0) {
         win();
-        return 2;
-    }else return;
+        return true;
+    }
+    return false;
 }
 //check for attackbtn
 attackBtn.addEventListener('click', async function () {
     console.log("PlayerTurn");
     console.log(turn);
     addItemToInventory(4);
+
     if (turn) {
         if (enIsGuard) {
-            //if enemy is guarding do half dmg
-            enHealth = enHealth - plDamage / 2;
+            // Enemy is guarding — take half damage
+            enHealth -= plDamage / 2;
             enIsGuard = false;
-            //displaying enemy health
             document.getElementById("enemyhp").innerHTML = "Enemy health: " + enHealth;
             document.getElementById("battleText").innerHTML = "You attacked!";
-            await delay(1000);
-            isGameOver();
         } else {
-            //if enemy is not guarding do full dmg
-            enHealth = enHealth - plDamage;
+            // Full damage
+            enHealth -= plDamage;
             document.getElementById("enemyhp").innerHTML = "Enemy health: " + enHealth;
             document.getElementById("battleText").innerHTML = "You attacked!";
-            await delay(1000);
-            isGameOver();
         }
-        turn = false;
 
+        await delay(1000);
+
+        // Check if the game ended — stop here if it did
+        if (isGameOver()) return;
+
+        turn = false;
+        enemyTurn(); // Guard's turn only if game is still ongoing
     }
-    enemyTurn();
 });
 //defending function
 defendBtn.addEventListener('click', async function () {
-    console.log("PlayerTurn"); //debugging
-    console.log(turn); //debugging
+    console.log("PlayerTurn"); // debugging
+    console.log(turn);         // debugging
+
     if (turn) {
         document.getElementById("battleText").innerHTML = "You defended, you will take half the damage next time you get hit!";
         await delay(1000);
         plIsGuard = true;
+
+        // Check if game is over before allowing the enemy to act
+        if (isGameOver()) return;
+
         turn = false;
-        isGameOver();
+        enemyTurn();
     }
-    enemyTurn();
 });
+
 //WILL NOT FUNCTION UNTIL THE INVENTORY FUNCTION IS WORKING
 //using an item
 //NEEDS CGED TOTAKE PARAMETER FOR PLAYERID
 itemBtn.addEventListener('click', async function () {
-
     if (turn) {
         playerTurn();
+
         if (enIsGuard) {
-            console.log("en is guard called")
-            if (await checkForItem(4) == true) {
+            console.log("en is guard called");
+
+            if (await checkForItem(4)) {
                 document.getElementById("battleText").innerHTML = "You attacked using a rusted scalpel, but the enemy blocked! The scalpel broke...";
-                enHealth = enHealth - plDamage - plDamage
+                enHealth -= plDamage * 2;
                 document.getElementById("enemyhp").innerHTML = "Enemy health: " + enHealth;
                 removeItemFromInventory(4);
-                turn = false;
-                plIsGuard = false;
-                await delay(2000);
-                isGameOver();
-            } else if (await checkForItem(5) == true) {
-                document.getElementById("battleText").innerHTML = "You attacked using knuckle dusters, but the enemy blocked! ";
-                enHealth = enHealth - plDamage
+            } else if (await checkForItem(5)) {
+                document.getElementById("battleText").innerHTML = "You attacked using knuckle dusters, but the enemy blocked!";
+                enHealth -= plDamage;
                 document.getElementById("enemyhp").innerHTML = "Enemy health: " + enHealth;
-                turn = false;
-                plIsGuard = false;
-                await delay(2000);
-                isGameOver();
             } else {
-                document.getElementById("battleText").innerHTML = "You had no items, so you punched the guard...but he blocked!"
-                enHealth = enHealth - 10;
+                document.getElementById("battleText").innerHTML = "You had no items, so you punched the guard... but he blocked!";
+                enHealth -= 10;
                 document.getElementById("enemyhp").innerHTML = "Enemy health: " + enHealth;
-                turn = false;
-                plIsGuard = false;
-                await delay(2000);
-                isGameOver();
             }
-            turn = false;
-
-        }
-        else {
-            if (await checkForItem(4) == true) {
-                console.log("en is guard called else")
+        } else {
+            if (await checkForItem(4)) {
                 document.getElementById("battleText").innerHTML = "You attacked using a rusted scalpel! The scalpel broke...";
-                enHealth = enHealth - plDamage - plDamage
+                enHealth -= plDamage * 2;
                 document.getElementById("enemyhp").innerHTML = "Enemy health: " + enHealth;
                 removeItemFromInventory(4);
-                turn = false;
-                plIsGuard = false;
-                await delay(2000);
-                isGameOver();
-            } else if (await checkForItem(5) == true) {
+            } else if (await checkForItem(5)) {
                 document.getElementById("battleText").innerHTML = "You attacked using knuckle dusters!";
-                enHealth = enHealth - plDamage - plDamage
+                enHealth -= plDamage * 2;
                 document.getElementById("enemyhp").innerHTML = "Enemy health: " + enHealth;
-                turn = false;
-                plIsGuard = false;
-                await delay(2000);
-                isGameOver();
             } else {
-                document.getElementById("battleText").innerHTML = "You have no items, so you punched the guard..."
-                enHealth = enHealth - plDamage;
+                document.getElementById("battleText").innerHTML = "You have no items, so you punched the guard...";
+                enHealth -= plDamage;
                 document.getElementById("enemyhp").innerHTML = "Enemy health: " + enHealth;
-                turn = false;
-                plIsGuard = false;
-                await delay(2000);
-                isGameOver();
             }
-            turn = false;
-
         }
-       
-    } enemyTurn();
 
+        turn = false;
+        plIsGuard = false;
+        await delay(2000);
 
+        if (isGameOver()) return;
+
+        enemyTurn();
+    }
 });
 
 
