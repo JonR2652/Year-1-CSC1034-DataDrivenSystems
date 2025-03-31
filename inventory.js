@@ -16,8 +16,6 @@ async function getPlayerID() {
 
 
 
-
-
 //this function displays the players inventory
 async function displayInventory() {
     //calls getPlayerID to get the playerID and display the correct inventory
