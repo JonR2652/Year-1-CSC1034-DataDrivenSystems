@@ -13,7 +13,7 @@ function overseer(button) {
         //this first case is to identify which button was clicked
         //case 1 is the hide action
         case 'buttonOne':
-            
+
 
 
             //after pressing button 1 aka "hide";
@@ -25,13 +25,13 @@ function overseer(button) {
                     document.getElementById("buttonTwo").innerHTML = "Attack!";
                     document.getElementById("buttonThree").innerHTML = "Scratch bum";
                     //pHolder updates and is now at a value of 2
-                    
-                    pHolder = 2;
-                    
-                    
-               
 
-                    
+                    pHolder = 2;
+
+
+
+
+
 
 
                     break;
@@ -50,9 +50,9 @@ function overseer(button) {
                 case 3:
                     //this is the outcome of choosing to continue to courtyard
                     //escpae to next area
-                    delay(4000).then(() => {
+                    delay(2500).then(() => {
                         //this goes to next area
-                        location.replace(".html");
+                        location.replace("../htmlFiles/Breakout.html");
                     });
 
                     break;
@@ -64,7 +64,7 @@ function overseer(button) {
                     document.getElementById("buttonOne").innerHTML = "";
                     document.getElementById("buttonTwo").innerHTML = "";
                     document.getElementById("buttonThree").innerHTML = "";
-                    delay(4000).then(() => {
+                    delay(2500).then(() => {
                         //this goes to next area
                         location.replace("guardEncounter.html");
                     });
@@ -72,18 +72,18 @@ function overseer(button) {
 
                 case 5:
                     //alternate escape after sniffing hand
-                    delay(4000).then(() => {
+                    delay(2500).then(() => {
                         //this goes to next area
-                        location.replace(".html");
+                        location.replace("../htmlFiles/Breakout.html");
                     });
                     break;
 
-            
+
                 case 6:
                     document.getElementById('choice').innerHTML = "It might be over for you now...attack!"
-                    delay(4000).then(() => {
+                    delay(2500).then(() => {
                         //this goes to next area
-                        location.replace("guardEncounter.html");
+                        location.replace("../htmlFiles/guardEncounter.html");
                     });
 
 
@@ -101,7 +101,7 @@ function overseer(button) {
                 //this is now the attacking minigame!
                 case 1:
                     //minigame
-                    
+
                     location.replace("guardEncounter.html");
 
                     break;
@@ -114,11 +114,11 @@ function overseer(button) {
 
                 case 3:
                     //escpape to next area
-                        //locationreplace("");
-                        delay(4000).then(() => {
-                            //this goes to next area
-                            location.replace(".html");
-                        });
+                    //locationreplace("");
+                    delay(2500).then(() => {
+                        //this goes to next area
+                        location.replace("../htmlFiles/Breakout.html");
+                    });
                     break;
 
                 case 4:
@@ -132,9 +132,9 @@ function overseer(button) {
 
                 case 5:
                     //alternate escape after sniffing hand
-                    delay(4000).then(() => {
+                    delay(2500).then(() => {
                         //this goes to next area
-                        location.replace(".html");
+                        location.replace("../htmlFiles/Breakout.html");
                     });
 
                     break;
@@ -158,9 +158,9 @@ function overseer(button) {
                     document.getElementById("buttonTwo").innerHTML = "Lie about why you are out"; //end in more dialogue options
                     document.getElementById("buttonThree").innerHTML = "Lie about fight in dining hall"; //ends in more dialogue options
                     //pHolder updates and is now at a value of 4
-                 
+
                     pHolder = 4;
-                   
+
 
 
                     break;
@@ -193,20 +193,20 @@ function overseer(button) {
                     document.getElementById("buttonTwo").innerHTML = "";
                     document.getElementById("buttonThree").innerHTML = "";
                     ponder++;
-                    delay(4000).then(() => {
+                    delay(2500).then(() => {
                         //this goes to next area
-                        location.replace("guardEncounter.html");
+                        location.replace("../htmlFiles/guardEncounter.html");
                     });
-                  
 
-                    
+
+
 
 
                     break;
 
                 case 5:
                     //outcome for charm, lie about fight in dining hall
-                 
+
                     document.getElementById("choice").innerHTML = "Really? You hear the guard walk off into the distance! YOU SHOULD LEAVE";
                     document.getElementById("buttonOne").innerHTML = "Continue to the courtyard";
                     document.getElementById("buttonTwo").innerHTML = "Celebrate and continue!";
@@ -218,9 +218,9 @@ function overseer(button) {
 
                 case 6:
                     document.getElementById('choice').innerHTML = "It might be over for you now...attack!"
-                    delay(4000).then(() => {
+                    delay(2500).then(() => {
                         //this goes to next area
-                        location.replace(".html");
+                        location.replace("../htmlFiles/guardEncounter.html");
                     });
                     break;
 

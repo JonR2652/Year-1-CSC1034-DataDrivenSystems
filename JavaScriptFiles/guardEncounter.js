@@ -65,6 +65,7 @@ async function enemyTurn() {
 attackBtn.addEventListener('click', async function () {
     console.log("PlayerTurn");
     console.log(turn);
+    addItemToInventory(4);
     if (turn) {
         if (enIsGuard) {
             //if enemy is guarding do half dmg
@@ -109,11 +110,11 @@ itemBtn.addEventListener('click', async function () {
                 document.getElementById("battleText").innerHTML = "You attacked using a rusted scalpel, but the enemy blocked! The scalpel broke...";
                 enHealth = enHealth - plDamage - plDamage
                 document.getElementById("enemyhp").innerHTML = "Enemy health: " + enHealth;
-                // removeItemFromInventory(getPlayerID(), 4);
+                removeItemFromInventory(4);
                 turn = false;
                 plIsGuard = false;
                 await delay(2000);
-            } else if (checkForItem() == 6) {
+            } else if (checkForItem() == 5) {
                 document.getElementById("battleText").innerHTML = "You attacked using knuckle dusters, but the enemy blocked! ";
                 enHealth = enHealth - plDamage
                 document.getElementById("enemyhp").innerHTML = "Enemy health: " + enHealth;
@@ -136,11 +137,11 @@ itemBtn.addEventListener('click', async function () {
                 document.getElementById("battleText").innerHTML = "You attacked using a rusted scalpel! The scalpel broke...";
                 enHealth = enHealth - plDamage - plDamage
                 document.getElementById("enemyhp").innerHTML = "Enemy health: " + enHealth;
-                // removeItemFromInventory(getPlayerID(), 4);
+                removeItemFromInventory(4);
                 turn = false;
                 plIsGuard = false;
                 await delay(2000);
-            } else if (checkForItem() == 6) {
+            } else if (checkForItem() == 5) {
                 document.getElementById("battleText").innerHTML = "You attacked using knuckle dusters!";
                 enHealth = enHealth - plDamage - plDamage
                 document.getElementById("enemyhp").innerHTML = "Enemy health: " + enHealth;
@@ -199,11 +200,15 @@ function delay(milliseconds) {
     });
 }
 // leads to win/lose page
-function win() {
-    location.replace("./win.html");
+async function win() {
+    document.getElementById("battleText").innerHTML = "You beat the guard!"
+    await delay(3000);
+    location.replace("../htmlFiles/Breakout.html");
 }
-
-function lose() {
+//LOSE SCREEN
+async function lose() {
+    document.getElementById("battleText").innerHTML = "Oh no! The guard knocked you out!"
+    await delay(3000);
     location.replace("./lose.html");
 }
 
