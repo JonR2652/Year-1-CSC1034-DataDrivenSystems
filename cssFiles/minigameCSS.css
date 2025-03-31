@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(110, 109, 95);
+    color: rgb(74, 73, 55);
+    font-family: Arial, sans-serif;
+}
+
+/* Wrapper styling */
+.wrapper {
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* Banner */
+.banner {
+    background-color: rgb(74, 73, 55);
+    color: rgb(219, 219, 215);
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid beige;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: rgb(120, 120, 95);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 30px;
+}
+
+nav a {
+    color: rgb(219, 219, 215);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline dashed;
+}
+
+/* Top content including image */
+.topContent {
+    padding: 20px;
+    text-align: center;
+    margin: 30px;
+    background: rgb(219, 219, 215);
+    text-decoration: underline;
+    border-style: solid;
+    border-width: 5px;
+    border-color: rgb(74, 73, 55);
+}
+/* Inventory header */
+#inventoryHeader {
+    margin-top: 5px;
+    font-size: 30px;
+    text-decoration: underline;
+}
+/* Inventory styling */
+.inventory {
+    text-align: center;
+    padding: auto;
+}
+
+/* Image styling */
+.image-content {
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.image-placeholder img {
+    width: 100%;
+    height: auto;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(74, 73, 55);
+}
+
+/* Header above image */
+#breakoutHeader {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+/* Bottom content styling */
+.bottomContent {
+    padding: 20px;
+}
+
+#enemyhp,
+#battleText,
+#playerhp,
+#endscreen {
+
+    font-family: Arial, sans-serif;
+    color: rgb(0, 0, 0);
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* Narrative box styling */
+.text-content {
+    padding: 20px;
+    font-size: 30px;
+    background: rgb(219, 219, 215);
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: rgb(74, 73, 55);
+    margin-bottom: 20px;
+}
+
+/* Button box styling */
+.button-box {
+    padding: 20px;
+    text-align: center;
+    background: rgb(219, 219, 215);
+    border-radius: 8px;
+    border: 5px solid rgb(74, 73, 55);
+}
+
+.button-box .button {
+    font-size: 30px;
+    margin: 5px;
+}
+
+/* Footer */
+footer {
+    background-color: rgb(219, 219, 215);
+    color: rgb(74, 73, 55);
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: rgb(74, 73, 55);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav a:hover {
+        text-decoration: underline;
+    }
+
+    .topContent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .bottomContent {
+        padding: 10px;
+    }
+
+    .text-content {
+        padding: 10px;
+        background: rgb(219, 219, 215);
+        border-radius: 4px;
+        font-size: larger;
+    }
+
+    .button-box {
+        padding: 10px;
+    }
+
+    footer {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        margin: 10px;
+    }
+}

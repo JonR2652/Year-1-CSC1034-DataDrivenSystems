@@ -1,0 +1,145 @@
+<!-- The page below was created by Timothy Reid -->
+<!-- This is my own work but I did use help from w3schools to create the login forms -->
+
+<!DOCTYPE html>
+<html lang="en">
+<!--This head contains info on how the web browser should interpret our code,
+    alongside linking our styling page and including our title.-->
+
+<head>
+    <link rel="stylesheet" href="../cssFiles/Game.css">
+    <link rel="stylesheet" href="../cssFiles/highContrast.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escaping Crumlin Gaol</title>
+
+</head>
+
+
+
+
+<body>
+    <!--this wrapper is used to group the title and nav links to the top
+and also format the webpage so that it can have margins and also allow us to centre any objects -->
+    <div class="wrapper">
+        <div class="banner">
+            Welcome to Crumlin Road Gaol
+        </div>
+        <!--simple nav to get around the site-->
+        <!--REMEMBEER TO ADD LINKS HERE!!!!-->
+        <nav>
+            <a href="Homepage.html">Home</a>
+            <a href="#">About</a>
+            <a href="Coming Soon.html">More Games</a>
+            <button id="pauseButton">Menu</button>
+
+        </nav>
+
+        <!--this contains the main text depending on the page, ie for intro the 'p' will change to fit the current narative -->
+        <!--EDIT H2 AND P HERE FOR EACH ROOM!-->
+        <!-- The code for this room has been written by Tim -->
+        <div class="topContent"> <!--This holds the top box content holding the image-->
+            <section class="image-content">
+                <h2 id="breakoutHeader">Login</h2>
+                <div class="image-placeholder"> <!--This is the image class any css to syle image use this class-->
+                    <video id="welcomeVideo" autoplay muted controls>
+                        <source src="Tims Images/10475370-hd_2048_1080_25fps.mp4" type="video/mp4">
+                        <!--Video from Pexels-->
+                        Your browser does not support the video format.
+                    </video>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="bottomContent"> <!--This groups the flex box at the bottom with all the content inside-->
+            <section class="welcomeContent"> <!--This the box on the left holding the main content-->
+                <h2>Welcome!</h2>
+                <h3 style="font-size: 25px;">If you have already registered please login here:</h3> <br>
+
+                <form id="userLogin">
+                    <label> Email: <br>
+                        <input type="text" id="username" placeholder="Enter Email" name="username" required>
+                    </label> <br>
+                    <label>Password: <br>
+                        <input type="password" id="password" placeholder="Enter Password" name="password" required>
+                    </label> <br>
+
+                    <button class="button" id="loginButton" type="submit" role="Login">Login</button> <br>
+                    <p id="loginMessage"></p>
+
+                </form>
+
+
+
+
+
+            </section>
+
+            <aside class="sidebar"> <!--This groups the box on the right that will hold the choices-->
+                <h2 id="regHeader">Please Register</h2>
+                <form id="registration"> <!--This is the user reg box-->
+                    <label><b>First Name:</b> <br>
+                        <input type="text" id="firstName" name="firstname" required> <!--Enter Username box-->
+                    </label>
+                    <label><b>Surname:</b> <br>
+                        <input type="text" id="surname" name="lastname" required> <!--Enter Username box-->
+                    </label> <br>
+                    <label><b>Email:</b> <br>
+                        <input type="text" id="regUsername" name="regUsername" required> <!--Enter Username box-->
+                    </label> <br>
+                    <label><b>Password:</b>
+                        <input type="password" id="regPassword" name="regPassword" required> <!--Enter password box-->
+                    </label> <br>
+                    <label><b>Confirm Password:</b>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                        <!--Enter password box-->
+                    </label> <br>
+
+                    <button class="button" id="registerButton" type="submit" role="Register">Register</button>
+                    <!--Submit button with some inline css to quickly make it look better-->
+                    <p id="registerMessage"></p>
+                </form>
+            </aside>
+
+        </div>
+
+
+        <footer> <!--This holds the footer information at the bottom -->
+            <p>We hope you really enjoyed playing this game!</p>
+            <p>Creators: Jon Roberts, Tim Reid, Cahal Donnely, Declan McArdle, Rossa Mullen</p>
+        </footer>
+
+        <div id="pauseMenu" class="hidden" ?>
+            <div class="pauseContainer">
+                <h2>Menu</h2>
+                <button id="resumeButton">Resume</button>
+                <div class="accessibilityFeatures">
+                    <!--This holds the top left box content for all the accessibility features-->
+                    <section class="buttons"> <!--This holds the buttons section for user to change certain aspects-->
+                        <h2 id="accessibilityHeader">To change certain features, </h2>
+                        <h2 id="accessibilityHeader">please select from the list below:</h2>
+                        <button class="button" type="button" id="increaseTextSize">Increase Text Size</button>
+                        <br>
+                        <button class="button" type="button" id="decreaseTextSize">Decrease Text Size</button>
+                        <br>
+                        <button class="button" type="button" id="changeContrast">Change Contrast</button>
+                        <br>
+                        <button class="button" type="button" id="changeFontStyle">Change Font Style</button>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="../JavaScriptFiles/config.js"></script>
+    <script src="../JavaScriptFiles/login.js"></script>
+    <script src="../JavaScriptiles/pauseButton.js"></script>
+    <script src="../JavaScriptFiles/accessibility-3.js"></script>
+
+
+</body>
+
+</html>
