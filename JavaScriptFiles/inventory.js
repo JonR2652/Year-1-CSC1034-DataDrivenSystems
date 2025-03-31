@@ -59,7 +59,7 @@ async function displayInventory() {
 
         //if the inventory is empty, tell user
         if (result.length === 0) {
-            items.innerHTML += "<p>You have no items.</p>";
+            items.innerHTML += "You have no items.";
             return;
         }
         //update the item list with item.itemName. Iterates over the inventory to do this
@@ -85,6 +85,7 @@ async function displayInventory() {
 // Load inventory when the page loads. This grabs the playerID from session storage in the displayInventory function
 document.addEventListener("DOMContentLoaded", () => {
     displayInventory();
+   
 
 });
 
@@ -199,6 +200,7 @@ async function removeItemFromInventory(itemID) {
 //uses the parameter itemID to check for the desired item
 //if the player has the item, it return true. otherwise it returns false. 
 async function checkForItem(itemID) {
+    console.log("check for item called")
     //check if player exists
     let playerID = await getPlayerID();
     if (!playerID) {

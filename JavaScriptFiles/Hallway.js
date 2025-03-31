@@ -25,7 +25,6 @@ function overseer(button) {
                     document.getElementById("buttonTwo").innerHTML = "Attack!";
                     document.getElementById("buttonThree").innerHTML = "Scratch bum";
                     //pHolder updates and is now at a value of 2
-
                     pHolder = 2;
 
 

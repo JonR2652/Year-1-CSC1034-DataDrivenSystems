@@ -23,8 +23,6 @@ function printSessionStorage() {
 //this needs to return the sessionid
 // where session id = printSessionStorage
 //return player id;
-<<<<<<< HEAD:config.js
-=======
 
 function checkLogin() {
     if (!sessionStorage.getItem('PlayerID')) {
@@ -32,4 +30,3 @@ function checkLogin() {
         return;
     }
 }
->>>>>>> cf98b2dab0891c87a1da9dcff98a024dbcff19d9:JavaScriptFiles/config.js
