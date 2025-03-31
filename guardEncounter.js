@@ -1,5 +1,4 @@
 
-
 // Player variables
 var plHealth = 100;
 var plDamage = 20;
@@ -106,7 +105,7 @@ itemBtn.addEventListener('click', async function () {
 
     if (turn) {
         if (enIsGuard) {
-            if (checkForItem(getPlayerID(), 4) == true) {
+            if (checkForItem(4) == true) {
                 document.getElementById("battleText").innerHTML = "You attacked using a rusted scalpel, but the enemy blocked! The scalpel broke...";
                 enHealth = enHealth - plDamage - plDamage
                 document.getElementById("enemyhp").innerHTML = "Enemy health: " + enHealth;
@@ -121,9 +120,10 @@ itemBtn.addEventListener('click', async function () {
             turn = false;
 
         }
-        enemyTurn();
+       
 
     }
+    enemyTurn();
 });
 //enemy attack function
 async function enemyAttack() {

@@ -31,8 +31,6 @@ and also format the webpage so that it can have margins and also allow us to cen
             <a href="Homepage.html">Home</a>
             <a href="#">About</a>
             <a href="Coming Soon.html">More Games</a>
-            <button id="pauseButton">Menu</button>
-
 
         </nav>
 
@@ -59,12 +57,12 @@ and also format the webpage so that it can have margins and also allow us to cen
                 <h3 style="font-size: 25px;">Welcome <span id="loginUser"></span></h3>
 
                 <ul id="welcomeList">
-                    <li><button class="button" id="newGameButton" type="button" role="Start New Game">New
-                            Game</button>
+                    <li><button class="button" id="newGameButton" type="button" onclick="window.location.href='hallway.html';">
+                        New Game
                     </li>
-                    <li><button class="button" id="newGameButton" type="button" role="Resume Previous Game">Resume
+                    <li><button class="button" id="newGameButton" type="button" role="Resume Previous Game" onclick="document.location='playgroundScript'" >Resume
                             Game</button></li>
-                    <li><button class="button" id="pauseButton" type="button" role="Accessebility">Settings</button>
+                    <li><button class="button" id="pauseButton" type="button" role="Accessibility">Settings</button>
                     </li>
                 </ul>
             </section>

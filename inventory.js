@@ -14,6 +14,17 @@ async function getPlayerID() {
 }
 
 
+async function getSessionID() {
+    let sessionID = sessionStorage.getItem("SessionID"); // Get PlayerID from session storage
+    if (sessionID) {
+        return sessionID;
+    } else {
+        console.error("PlayerID not found in session storage.");
+        return null;
+    }
+}
+
+
 
 
 
@@ -22,6 +33,7 @@ async function getPlayerID() {
 async function displayInventory() {
     //calls getPlayerID to get the playerID and display the correct inventory
     const playerID = await getPlayerID();
+    const sessionID = await getSessionID();
     //if the playerID is not found, push error message
     if (!playerID) {
         console.error("PlayerID not be found.");
@@ -120,6 +132,7 @@ async function testQuery() {
 // example call; addItemToInventory(1);
 async function addItemToInventory(itemID) {
     //check if player exists
+    let sessionID = sessionStorage.getItem("SessionID");
     let playerID = await getPlayerID();
     if (!playerID) {
         console.error("PlayerID cannot be found.");
@@ -158,7 +171,8 @@ async function addItemToInventory(itemID) {
 //takes a parameter itemID to choose which item to remove
 // example call; removeItemFromInventory(1);
 async function removeItemFromInventory(itemID) {
-       //check if player exists
+    //check if player exists
+    let sessionID = sessionStorage.getItem("SessionID");
     let playerID = await getPlayerID();
     if (!playerID) {
         console.error("PlayerID cannot be found.");

@@ -38,7 +38,7 @@ document.getElementById("userLogin").addEventListener("submit", async function (
         sessionStorage.setItem("PlayerID", user.PlayerID); //This stores playerID
         sessionStorage.setItem("Email", user.Email); // stores their email in a session variable to use later on the summary page for example
         sessionStorage.setItem("PlayerForename", user.PlayerForename); //stores their name in a session variable for use later 
-
+        sessionStorage.setItem("SessionID",user.SessionID);
         let insertSessionQuery = `INSERT INTO sessionInfo (PlayerID) VALUES ('${user.PlayerID}')`; //this is the sql query to insert a new sessionID into sessionInfo table when the user is logged in
         dbConfig.set('query', insertSessionQuery);
 

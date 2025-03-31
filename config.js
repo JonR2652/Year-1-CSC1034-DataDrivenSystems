@@ -23,3 +23,10 @@ function printSessionStorage() {
 //this needs to return the sessionid
 // where session id = printSessionStorage
 //return player id;
+
+function checkLogin() {
+    if (!sessionStorage.getItem('PlayerID')) {
+        window.location.href = 'login.html';
+        return;
+    }
+}
