@@ -110,21 +110,60 @@ itemBtn.addEventListener('click', async function () {
                 enHealth = enHealth - plDamage - plDamage
                 document.getElementById("enemyhp").innerHTML = "Enemy health: " + enHealth;
                 // removeItemFromInventory(getPlayerID(), 4);
+                turn = false;
+                plIsGuard = false;
+                await delay(2000);
+            } else if (checkForItem() == 6) {
+                document.getElementById("battleText").innerHTML = "You attacked using knuckle dusters, but the enemy blocked! ";
+                enHealth = enHealth - plDamage
+                document.getElementById("enemyhp").innerHTML = "Enemy health: " + enHealth;
+                turn = false;
+                plIsGuard = false;
                 await delay(2000);
             } else {
-                document.getElementById("battleText").innerHTML = "You attacked using a rusted scalpel, but the enemy blocked! The scalpel broke...";
-                enHealth = enHealth - plDamage - plDamage
+                document.getElementById("battleText").innerHTML = "You had no items, so you punched the guard...but he blocked!"
+                enHealth = enHealth - 10;
                 document.getElementById("enemyhp").innerHTML = "Enemy health: " + enHealth;
-                //if enemy is not guarding do full dmg
+                turn = false;
+                plIsGuard = false;
+                await delay(2000);
             }
             turn = false;
 
         }
-       
+        else {
+            if (checkForItem(4) == true) {
+                document.getElementById("battleText").innerHTML = "You attacked using a rusted scalpel! The scalpel broke...";
+                enHealth = enHealth - plDamage - plDamage
+                document.getElementById("enemyhp").innerHTML = "Enemy health: " + enHealth;
+                // removeItemFromInventory(getPlayerID(), 4);
+                turn = false;
+                plIsGuard = false;
+                await delay(2000);
+            } else if (checkForItem() == 6) {
+                document.getElementById("battleText").innerHTML = "You attacked using knuckle dusters!";
+                enHealth = enHealth - plDamage - plDamage
+                document.getElementById("enemyhp").innerHTML = "Enemy health: " + enHealth;
+                turn = false;
+                plIsGuard = false;
+                await delay(2000);
+            } else {
+                document.getElementById("battleText").innerHTML = "You have no items, so you punched the guard..."
+                enHealth = enHealth - plDamage;
+                document.getElementById("enemyhp").innerHTML = "Enemy health: " + enHealth;
+                turn = false;
+                plIsGuard = false;
+                await delay(2000);
+            }
+            turn = false;
 
+        }
     }
     enemyTurn();
+
 });
+
+
 //enemy attack function
 async function enemyAttack() {
     if (plIsGuard) {
