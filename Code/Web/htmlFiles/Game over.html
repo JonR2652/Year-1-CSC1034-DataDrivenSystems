@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--This head contains info on how the web browser should interpret our code,
+    alongside linking our styling page and including our title.-->
+
+<head>
+    <link rel="stylesheet" href="css/GameTim.css">
+    <link rel="stylesheet" href="css/highContrast.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Prism&display=swap" rel="stylesheet">
+    <!--Font from google fonts-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escaping Crumlin Gaol</title>
+
+
+</head>
+
+
+
+
+<body>
+    <!--this wrapper is used to group the title and nav links to the top
+and also format the webpage so that it can have margins and also allow us to centre any objects -->
+    <div class="wrapper">
+        <div class="banner">
+            Welcome to Crumlin Road Gaol
+        </div>
+        <!--simple nav to get around the site-->
+        <!--REMEMBEER TO ADD LINKS HERE!!!!-->
+        <nav>
+            <a href="Homepage.html">Home</a>
+            <a href="#">About</a>
+            <a href="Coming Soon.html">More Games</a>
+            <button id="pauseButton">Pause</button>
+
+        </nav>
+
+        <!--this contains the main text depending on the page, ie for intro the 'p' will change to fit the current narative -->
+        <!-- The code for this room has been written by Tim -->
+        <div class="topContent"> <!--This holds the top box content holding the image-->
+            <section class="image-content">
+                <h1 id="gameOver">Game Over</h1>
+                <p><button class="button" role="continue to summary page">Continue to summary</button></p>
+            </section>
+
+
+            <footer> <!--This holds the footer information at the bottom -->
+                <p>We hope you really enjoyed playing this game!</p>
+                <p>Creators: Jon Roberts, Tim Reid, Cahal Donnely, Declan McArdle, Rossa Mullan, Aaron Campbell</p>
+            </footer>
+
+            <div id="pauseMenu" class="hidden" ?>
+                <div class="pauseContainer">
+                    <h2>Menu</h2>
+                    <button id="resumeButton">Resume</button>
+                    <button id="exitSaveButton">Exit & Save</button>
+                    <div class="accessibilityFeatures">
+                        <!--This holds the top left box content for all the accessibility features-->
+                        <section class="buttons">
+                            <!--This holds the buttons section for user to change certain aspects-->
+                            <h2 id="accessibilityHeader">To change certain features, </h2>
+                            <h2 id="accessibilityHeader">please select from the list below:</h2>
+                            <button class="button" type="button" id="increaseTextSize">Increase Text Size</button>
+                            <br>
+                            <button class="button" type="button" id="decreaseTextSize">Decrease Text Size</button>
+                            <br>
+                            <button class="button" type="button" id="changeContrast">Change Contrast</button>
+                            <br>
+                            <button class="button" type="button" id="changeFontStyle">Change Font Style</button>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script src="js/config.js"></script>
+        <script src="js/pauseButton.js"></script>
+        <script src="js/accessibility-3.js"></script>
+        <script src="js/gameOver.js"></script>
+
+
+
+
+</body>
+
+</html>

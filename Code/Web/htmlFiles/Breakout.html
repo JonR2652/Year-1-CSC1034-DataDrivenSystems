@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--This head contains info on how the web browser should interpret our code,
+    alongside linking our styling page and including our title.-->
+
+<head>
+    <link rel="stylesheet" href="css/GameTim.css">
+    <link rel="stylesheet" href="css/highContrast.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escaping Crumlin Gaol</title>
+
+</head>
+
+
+
+
+<body>
+    <!--this wrapper is used to group the title and nav links to the top
+and also format the webpage so that it can have margins and also allow us to centre any objects -->
+    <div class="wrapper">
+        <div class="banner">
+            Welcome to Crumlin Road Gaol
+        </div>
+        <!--simple nav to get around the site-->
+        <!--REMEMBEER TO ADD LINKS HERE!!!!-->
+        <nav>
+            <a href="Homepage.html">Home</a>
+            <a href="#">About</a>
+            <a href="Coming Soon.html">More Games</a>
+            <button id="pauseButton">Pause</button>
+
+        </nav>
+
+        <!--this contains the main text depending on the page, ie for intro the 'p' will change to fit the current narative -->
+        <!--EDIT H2 AND P HERE FOR EACH ROOM!-->
+        <!-- The code for this room has been written by Tim -->
+        <div class="topContent"> <!--This holds the top box content holding the image-->
+            <section class="image-content">
+                <h2 id="breakoutHeader">The Breakout</h2>
+                <div class="image-placeholder"> <!--This is the image class any css to syle image use this class-->
+                    <img id="topImage" src="Tims Images/courtyard.jpg"
+                        alt="A Photo of a prison courtyard. Large open space with high walls">
+                </div> <!--Image from Pexels-->
+            </section>
+
+        </div>
+
+        <div class="bottomContent"> <!--This groups the flex box at the bottom with all the content inside-->
+            <section class="text-content"> <!--This the box on the left holding the main content-->
+                <h2 id="textHeader">Courtyard</h2>
+                <p id="text">Text-placeholder</p> <!--This paaragraph is what holds our text for our story-->
+                <audio id="sirenSound" src="Tims Images/siren.mp3" preload="auto"></audio>
+            </section>
+
+            <aside class="sidebar"> <!--This groups the box on the right that will hold the choices-->
+                <h2>What would you like to do?</h2>
+                <span id="suspicionLevel">Suspicion Level: 0</span>
+                <p>
+                <ol class="numSize"> <!--Ordered list of buttons to allow selction of choices-->
+                    <li id="remove1"><button class="button" id="button1" type="button"
+                            role="choice selector">text</button></li>
+                    <!-- The role tags help with accessibility-->
+                    <li id="remove2"><button class="button" id="button2" type="button"
+                            role="choice selector">text</button></li>
+                    <li id="remove3"><button class="button" id="button3" type="button"
+                            role="choice selector">text</button></li>
+                </ol>
+
+                </p>
+            </aside>
+
+        </div>
+
+        <div class="bottomContent"> <!--This adds a box at the bottom for inventory-->
+            <section class="text-content"> <!--This the box on the left holding the main content-->
+                <h2 id="inventoryHeader">Inventory</h2>
+                <p id="items"></p> <!--This paaragraph is what holds our text for our story-->
+            </section>
+
+
+            <footer class="sidebar"> <!--This holds the footer information at the bottom -->
+                <p>We hope you really enjoyed playing this game!</p>
+                <br>
+                <p>Creators: Jon Roberts, Tim Reid, Cahal Donnely, Declan McArdle, Rossa Mullan, Aaron Campbell</p>
+            </footer>
+        </div>
+
+        <div id="pauseMenu" class="hidden" ?>
+            <div class="pauseContainer">
+                <h2>Game Paused</h2>
+                <button id="resumeButton">Resume</button>
+                <button id="exitSaveButton">Exit & Save</button>
+                <div class="accessibilityFeatures">
+                    <!--This holds the top left box content for all the accessibility features-->
+                    <section class="buttons"> <!--This holds the buttons section for user to change certain aspects-->
+                        <h2 id="accessibilityHeader">To change certain features, </h2>
+                        <h2 id="accessibilityHeader">please select from the list below:</h2>
+                        <button class="button" type="button" id="increaseTextSize">Increase Text Size</button>
+                        <br>
+                        <button class="button" type="button" id="decreaseTextSize">Decrease Text Size</button>
+                        <br>
+                        <button class="button" type="button" id="changeContrast">Change Contrast</button>
+                        <br>
+                        <button class="button" type="button" id="changeFontStyle">Change Font Style</button>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/breakout.js"></script>
+    <script src="js/inventory.js"></script>
+    <script src="js/pauseButton.js"></script>
+    <script src="js/accessibility-3.js"></script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../cssFiles/theCell.css">
+    <link rel="stylesheet" href="../cssFiles/highContrast.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escaping Crumlin Gaol</title>
+</head>
+<body>
+    <!--this wrapper is used to group the title and nav links to the top
+    and also format the webpage so that it can have margins and also allow us to centre any objects -->
+    <div class="wrapper">
+        <div class="banner">
+            Welcome to Crumlin Road Gaol
+        </div>
+        <!--simple nav to get around the site-->
+        <!--REMEMBEER TO ADD LINKS HERE!!!!-->
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">More Games</a>
+            <button id="pauseButton">Pause</button>
+
+        </nav>
+
+        <!--this contains the main text depending on the page, ie for intro the 'p' will change to fit the current narative -->
+        <!--EDIT H2 AND P HERE FOR EACH ROOM!-->
+        <!-- The code for this room has been written by Tim -->
+        <div class="topContent"> <!--This holds the top box content holding the image-->
+            <section class="image-content">
+                <h2 id="breakoutHeader">Plan Of Action</h2>
+                <div class="image-placeholder"> <!--This is the image class any css to syle image use this class-->
+                    <img id="image" src="../images/prisonCell.png" alt="The cell in which the player wakes up in before going for lunch."> <!--This is the image tag that holds the image-->
+                </div>
+            </section>
+
+        </div>
+
+        <div class="attackContent">
+            <div class="overallAttack">
+                <h2 id="attackTitle"></h2>
+                <p id="attack"></p>
+                <input type="text" id="playerGuess" class="hidden" placeholder="Enter your guess" maxlength="4">
+                    <div id="plrHP"></div>
+                    <div id="grdHP"></div>
+            </div>
+        </div>
+
+        <div class="bottomContent"> <!--This groups the flex box at the bottom with all the content inside-->
+            <section class="text-content"> <!--This the box on the left holding the main content-->
+                <h2 class="textHeader" id="textHeader">The Return to the Cell</h2>
+                <p id="text"></p> <!--This paaragraph is what holds our text for our story-->
+            </section>
+        
+            <aside class="sidebar"> <!--This groups the box on the right that will hold the choices-->
+                <h3 id="subHeader">Decisions! Decisions!</h3>
+                <p id="subText">How will you try and break out of your cell? Did you lift anything useful to use to get you out?</p>
+                <p>
+                <ol class="numSize"> <!--Ordered list of buttons to allow selction of choices-->
+                    <li><button class="button" id="button1" type="button" role="bribeGuard">Bribe Guard</button></li> <!-- The role tags help with accessibility-->
+                    <li><button class="button" id="button2" type="button" role="usePaperclip">Use paper clip</button></li>
+                    <li><button class="button" id="button3" type="button" role="useGuardKey">Use Gaurds key</button></li> <!--This will be changed when group next meets to whatever is found in the cafeteria-->
+                </ol>
+
+                </p>
+            </aside>
+
+        </div>
+        
+        <div class="bottomContent"> <!--This adds a box at the bottom for inventory-->
+            <section class="text-content"> <!--This the box on the left holding the main content-->
+            <h2 id="inventoryHeader">Inventory</h2>
+            <p id="items"></p> <!--This paragraph is what holds our inventory items-->
+            </section>
+            
+            
+            <footer class="sidebar"> <!--This holds the footer information at the bottom -->
+            <p>We hope you really enjoyed playing this game!</p>
+            <br>
+            <p>Creators: Jon Roberts, Tim Reid, Cahal Donnely, Declan McArdle, Rossa Mullen, and Aaron Campbell</p>
+            </footer>
+        </div>
+
+        <div id="pauseMenu" class="hidden" ?>
+            <div class="pauseContainer">
+                <h2>Game Paused</h2>
+                <button id="resumeButton">Resume</button>
+                <button id="exitSaveButton">Exit & Save</button>
+                <div class="accessibilityFeatures">
+                    <!--This holds the top left box content for all the accessibility features-->
+                    <section class="buttons"> <!--This holds the buttons section for user to change certain aspects-->
+                        <h2 id="accessibilityHeader">To change certain features, </h2>
+                        <h2 id="accessibilityHeader">please select from the list below:</h2>
+                        <button class="button" type="button" id="increaseTextSize">Increase Text Size</button>
+                        <br>
+                        <button class="button" type="button" id="decreaseTextSize">Decrease Text Size</button>
+                        <br>
+                        <button class="button" type="button" id="changeContrast">Change Contrast</button>
+                        <br>
+                        <button class="button" type="button" id="changeFontStyle">Change Font Style</button>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <script src="../JavaScriptFiles/theCellpt2.js"></script>
+    <script src="../JavaScriptFiles//config.js"></script>
+    <script src="../JavaScriptFiles/pauseButton.js"></script>
+    <script src="../JavaScriptFiles/accessibility-3.js"></script>
+    <script src="../JavaScriptFiles/homepage.js"></script>
+    <script src="../JavaScriptFiles/inventory.js"></script>
+    <script src="../JavaScriptFiles/login.js"></script>
+
+</body>
+</html>

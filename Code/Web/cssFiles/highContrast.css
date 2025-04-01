@@ -1,0 +1,46 @@
+
+/* High Contrast Mode */
+.high-contrast {
+    background-color: black;
+    color: white;
+}
+
+.high-contrast .banner {
+    background-color: #000000;
+    color: yellow;
+}
+
+.high-contrast nav {
+    background-color: #333333;
+    color: white;
+}
+
+.high-contrast nav a {
+    color: yellow;
+}
+
+.high-contrast .sidebar {
+    background-color: #333333;
+    color: white;
+}
+
+.high-contrast .text-content {
+    background-color: #444444;
+    color: white;
+}
+
+.high-contrast footer {
+    background-color: #222222;
+    color: white;
+}
+
+.high-contrast .accessibilityFeatures {
+    background-color: #333333;
+    color: white;
+}
+
+
+.high-contrast .topContent {
+    background-color: #222222;
+    color: yellow;
+}

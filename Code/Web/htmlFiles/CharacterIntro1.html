@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--This head contains info on how the web browser should interpret our code,
+    alongside linking our styling page and including our title.-->
+
+<head>
+    <link rel="stylesheet" href="../cssFiles/characterintro.css">
+    <link rel="stylesheet" href="../cssFiles/highContrast.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escaping Crumlin Gaol</title>
+
+</head>
+
+<body>
+    <!--this wrapper is used to group the title and navigation links to the top
+and also format the webpage so that it can have margins and also allow us to centre any objects -->
+    <div class="wrapper">
+        <div class="banner">
+            Welcome to Crumlin Road Gaol
+        </div>
+        <!--simple nav to get around the site to different pages-->
+
+        <nav>
+            <a href="Homepage.html">Home</a>
+            <a href="Coming soon">About</a>
+            <a href="Coming Soon.html">More Games</a>
+            <button id="pauseButton"> pause button </button>
+
+        </nav>
+
+        <!--this contains the main text for the character introduction and difficukty selection page -->
+
+        <div class="topContent"> <!--This holds the top box content holding the image-->
+            <section class="image-content">
+                <h2 id="characterintroheader">Character Introduction</h2>
+                <div class="image-placeholder"> <!--This is the image class-->
+                    <img src="../images/Big John.jpg" alt="A Photo of our charcter">
+                </div>
+                <!--Image from https://media.istockphoto.com/id/537346435/photo/mugshot-of-a-man.jpg?s=2048x2048&w=is&k=20&c=mER9dXJGCmNXn3JWeGj0iAjcOyHtl6eNsz4anxLBccA=-->
+            </section>
+
+        </div>
+
+        <div class="bottomContent"> <!--This groups the flex box at the bottom with all the content inside-->
+            <section class="text-content"> <!--This the box on the left holding the main content-->
+                <h2 id="textHeader">Difficulty Selection</h2>
+                <p id="boxtext"> Welcome to your journey! This is your first of many decisions you will be making along
+                    this
+                    journey, although this may not seem like a relavant or an important decision right now
+                    but this choice could make or break your jailbreak!!. Choosing a difficulty will enable you to view
+                    your options
+                    of a starting item, think carefully as when you choose there is no going back!!
+
+                </p>
+            </section>
+
+            <aside class="sidebar"> <!--This groups the box on the right that will hold the choices-->
+                <h3>What would you like to choose?</h3>
+                <h3>Choose Wisely!</h3>
+                <p>
+                <ol class="numSize"> <!--Ordered list of buttons to allow for difficulty selection-->
+                    <li><button class="button" id="button1" type="button" role="choose Beginner">Beginner</button></li>
+                    <li><button class="button" id="button2" type="button" role="choose Experienced">Experienced</button>
+                    </li>
+
+                </ol>
+
+                </p>
+            </aside>
+
+        </div>
+
+        <div class="bottomContent"> <!--This adds a box at the bottom for inventory-->
+            <section class="text-content"> <!--This the box on the left holding the main content-->
+                <h2 id="inventoryHeader">Inventory</h2>
+                <p id="items"> </p><!-- This paaragraph is what holds our text -->
+            </section>
+
+
+            <footer class="sidebar"> <!--This holds the footer information at the bottom -->
+                <p>We hope you really enjoyed playing this game!</p>
+                <br>
+                <p>Creators: Jon Roberts, Tim Reid, Cahal Donnely, Declan McArdle, Rossa Mullan, Aaron Campbell</p>
+            </footer>
+
+
+        </div>
+        <div id="pauseMenu" class="hidden" ?>
+            <div class="pauseContainer">
+                <h2>Game Paused</h2>
+                <button id="resumeButton">Resume</button>
+                <button id="exitSaveButton">Exit & Save</button>
+                <div class="accessibilityFeatures">
+                    <!--This holds the top left box content for all the accessibility features-->
+                    <section class="buttons"> <!--This holds the buttons section for user to change certain aspects-->
+                        <h2 id="accessibilityHeader">To change certain features, </h2>
+                        <h2 id="accessibilityHeader">please select from the list below:</h2>
+                        <button class="button" type="button" id="increaseTextSize">Increase Text Size</button>
+                        <br>
+                        <button class="button" type="button" id="decreaseTextSize">Decrease Text Size</button>
+                        <br>
+                        <button class="button" type="button" id="changeContrast">Change Contrast</button>
+                        <br>
+                        <button class="button" type="button" id="changeFontStyle">Change Font Style</button>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="../JavaScriptFiles/Characterintro.js"></script>
+        <script src="../JavaScriptFiles/pauseButton.js"></script>
+        <script src="../JavaScriptFiles/accessibility-3.js"></script>
+        <script src="../JavaScriptFiles/inventory.js"></script>
+        <script src="../JavaScriptFiles/config.js"></script>
+
+
+
+
+        <script src="../JavaScriptFiles/config.js"></script>
+        <script>
+            checkLogin(); // This will stop the game if PlayerID is not set
+        </script>
+
+
+</body>
+
+</html>
