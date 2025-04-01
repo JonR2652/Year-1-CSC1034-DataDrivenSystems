@@ -134,6 +134,51 @@ nav a:hover {
     margin: 5px;
 }
 
+/* Pause Menu */
+/* Use of ChatGPT and Google for help with creating a pause button */
+#pauseMenu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(74, 73, 55);
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#pauseMenu button {
+    background-color: black;
+    color: white;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: rgb(110, 109, 95);
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+#pauseMenu button:hover {
+    background-color: rgb(219, 219, 215);
+    color: black;
+    cursor: pointer;
+}
+
+#pauseButton {
+    background-color: rgb(120, 120, 95);
+    color: rgb(219, 219, 215);
+    top: 50%;
+    left: 50%;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
 /* Footer */
 footer {
     background-color: rgb(219, 219, 215);

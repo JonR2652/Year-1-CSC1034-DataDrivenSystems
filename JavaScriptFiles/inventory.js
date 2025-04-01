@@ -251,3 +251,29 @@ async function checkForItem(itemID) {
 
 }
 
+async function clearInventory() {
+    //check if player exists
+    let sessionID = sessionStorage.getItem("SessionID");
+    let playerID = await getPlayerID();
+    if (!playerID) {
+        console.error("PlayerID cannot be found.");
+        return;
+    }
+    let sqlQuery = `DELETE FROM playerInventory WHERE playerID = ${playerID};`
+
+  
+
+    dbConfig.set('query', sqlQuery);
+
+    try {
+        let response = await fetch(dbConnectorUrl, {
+            method: `POST`,
+            body: dbConfig,
+        });
+        let result = await response.json();
+        console.log("Remove all results:", result);
+
+    } catch (error) {
+        console.error("Error clearing inventory:", error)
+    }
+}
