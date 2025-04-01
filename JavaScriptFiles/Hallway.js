@@ -1,4 +1,4 @@
-
+checkLogin();
 //sniffhand and ponder are easter egg trackers. Sniff hand counts how many times the user has sniffed their hand
 //ponder is a one time activation
 ponder = 0;

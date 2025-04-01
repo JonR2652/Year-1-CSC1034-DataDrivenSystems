@@ -1,4 +1,4 @@
-
+checkLogin();
 // Player variables
 var plHealth = 100;
 var plDamage = 20;
