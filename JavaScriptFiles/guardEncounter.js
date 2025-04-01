@@ -67,7 +67,7 @@ function isGameOver() {
     if (plHealth <= 0) {
         lose();
         return true;
-    } 
+    }
     if (enHealth <= 0) {
         win();
         return true;
@@ -78,7 +78,7 @@ function isGameOver() {
 attackBtn.addEventListener('click', async function () {
     console.log("PlayerTurn");
     console.log(turn);
-    addItemToInventory(4);
+    
 
     if (turn) {
         if (enIsGuard) {
@@ -175,7 +175,7 @@ itemBtn.addEventListener('click', async function () {
 
 //enemy attack function
 async function enemyAttack() {
-    
+
     if (plIsGuard) {
         //if player is guarding do less dmg
         plHealth = plHealth - enDamage / 2;
@@ -211,21 +211,100 @@ function delay(milliseconds) {
 // leads to win/lose page
 async function win() {
     document.getElementById("battleText").innerHTML = "You beat the guard!"
-    await delay(3000);
+   
+    const music = document.getElementById("minigameMusic");
+    fadeOutMusic(music,5000)
+   
+   
+    await delay(5000);
     location.replace("../htmlFiles/Breakout.html");
 }
 //LOSE SCREEN
 async function lose() {
     document.getElementById("battleText").innerHTML = "Oh no! The guard knocked you out!"
-    await delay(3000);
+   
+    const music = document.getElementById("minigameMusic");
+    fadeOutMusic(music,5000)
+   
+   
+    await delay(5000);
+   
+    await delay(5000);
     location.replace("./lose.html");
 }
 
 //PLAYER INVENTORY display
 
 
+//function to play music, as well as fade in / out
+function playMusic() {
+    const music = document.getElementById("minigameMusic");
 
 
+    function startMusic() {
+        if (music.paused) {
+            fadeInMusic(music,5000)
+        }
+    document.removeEventListener("click", startMusic);
+    document.removeEventListener("keydown",startMusic);
+    document.removeEventListener("touchstart",startMusic);
+    
+    }
+    document.addEventListener("click", startMusic);
+    document.addEventListener("keydown", startMusic);
+    document.addEventListener("touchstart",startMusic);
+    
+
+
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    playMusic();
+})
+
+function fadeInMusic(audioElement, duration = 5000){
+    audioElement.volume = 0;
+    audioElement.play().catch(error => {
+        console.warn("Music couldn't begin", error);
+    });
+
+    const fadeSteps = 30;
+    const interval = duration / fadeSteps;
+    let step = 0;
+
+    const fadeInterval = setInterval(() => {
+        step++;
+        audioElement.volume = Math.min(step / fadeSteps, 1);
+
+        if (step>=fadeSteps) {
+            clearInterval(fadeInterval);
+        }
+    }, interval);
+}
+//fade out music, if none is defined then the default is 10000ms, otherwise 
+//call function with parameter(music, overrideDuration)
+function fadeOutMusic(audioElement, duration = 10000){
+    audioElement.volume = 1;
+    audioElement.play().catch(error => {
+        console.warn("Music couldn't begin", error);
+    });
+
+    const fadeSteps = 30;
+    const interval = duration / fadeSteps;
+    let step = 0;
+
+    const fadeInterval = setInterval(() => {
+        step++;
+        audioElement.volume = Math.max(1- step/ fadeSteps,0);
+
+        if (step>= fadeSteps) {
+            clearInterval(fadeInterval);
+            audioElement.pause();
+            audioElement.currentTime=0
+        }
+    },interval)
+
+}
 
 
 
