@@ -175,6 +175,7 @@ itemBtn.addEventListener('click', async function () {
 
 //enemy attack function
 async function enemyAttack() {
+    
     if (plIsGuard) {
         //if player is guarding do less dmg
         plHealth = plHealth - enDamage / 2;

@@ -28,6 +28,7 @@ async function getSessionID() {
 
 
 //this function displays the players inventory
+let lastInventory = "";
 async function displayInventory() {
     //calls getPlayerID to get the playerID and display the correct inventory
     const playerID = await getPlayerID();
@@ -56,21 +57,36 @@ async function displayInventory() {
 
 
         let items = document.getElementById("items");
-
-        //if the inventory is empty, tell user
-        if (result.length === 0) {
-            items.innerHTML += "You have no items.";
+        if (!items) {
+            console.error("Inventory is not found");
             return;
-        }
-        //update the item list with item.itemName. Iterates over the inventory to do this
-        let itemList = "<ul>";
-        result.data.forEach(item => {
-            itemList += `<li>${item.ItemName} </li>`;
-        });
-        itemList += "</ul>";
 
-        items.innerHTML += itemList;
-    } catch (error) {
+        }
+
+        let newInventory = "";
+        //checks if the player has any items, if the player has no items
+        //  it displays 'you have no items.'
+        //otherwise it lists the items the user has.
+        if (!result.success || !Array.isArray(result.data) || result.data.length === 0) {
+            newInventory = "You have no items.";
+        } else {
+            //checks if the player has any items, if the player has no items
+            //  it displays 'you have no items.'
+            //otherwise it lists the items the user has.
+            let itemList = "<ul>";
+            result.data.forEach(item => {
+                itemList += `<li>${item.ItemName} </li>`;
+            });
+            itemList += "</ul>";
+            newInventory += itemList;
+        }
+        if (items.innerHTML !== newInventory) {
+            items.innerHTML = newInventory;
+        }
+    }
+
+
+    catch (error) {
         console.error("Error fetching inventory:", error);
     }
 
@@ -85,7 +101,8 @@ async function displayInventory() {
 // Load inventory when the page loads. This grabs the playerID from session storage in the displayInventory function
 document.addEventListener("DOMContentLoaded", () => {
     displayInventory();
-   
+    setInterval(displayInventory, 5000)
+
 
 });
 
