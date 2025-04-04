@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--This head contains info on how the web browser should interpret our code,
+        alongside linking our styling page and including our title.-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escaping Crumlin Gaol</title>
+    <link rel="stylesheet" href="../cssFiles/cafeteriaSection4.css"> <!--Link to external CSS for styling-->   
+</head>
+
+<body>
+    <!--This wrapper is used to group the title and nav links to the top and also format the webpage so that it can have margins and also allow us to centre any objects -->
+    <div class="wrapper">
+        <!--Banner section for the title-->
+        <div class="banner">
+            Welcome to Crumlin Road Gaol
+        </div>
+        <!--Simple nav to get around the site-->
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">More Games</a>
+            <button id="pauseButton">Pause</button>
+        </nav>
+
+        <!-- Main content section for the Cafeteria page -->
+        <!-- The code for this room has been written by Aaron -->   
+        <div class="topContent">
+            <!--This holds the top box content holding the image--> 
+            <section class="image-content">
+                <h2 id="cafeteriaHeader">The Cafeteria</h2>
+                <!--This is the image class any css to style image use this class-->
+                <div class="image-placeholder">
+                    <!--Image of the cafeteria--> 
+                    <img src="../images/cafeteriaImage.avif" alt="Cafeteria">
+                </div>
+            </section>
+        </div>
+
+        <!--This groups the flex box at the bottom for questions and inventory-->
+        <div class="bottomContent">
+            <!-- This the box on the left holding the main content-->
+            <section class="text-content" id="mainText">
+                <div class="banner">
+                    Cafeteria
+                </div>
+                <!--Main text introducing the scenario for this question -->
+                <p id="intro">
+                    As you make your way through the cafeteria, suddenly one of the guards stops you, eyeing you with suspicion. 
+                    "Hey, I have a question for you," he says, his voice stern. "Have you seen anything unusual around here? 
+                    There's a food tray missing, and we're trying to figure out who might have taken it. Do you know anything about it?" 
+                    He crosses his arms, waiting for your response. How will you respond? Choose wisely, as your decision could affect your fate.
+                </p>
+            </section>
+        
+            <!--Form for resenting question and answers -->
+            <form id="questionForm">
+                <!--This groups the box on the right that will hold the choices-->
+                <aside class="sidebar"> 
+                    <h3>A guard asks you if you know anything about a missing food tray. What do you do?</h3>
+                    <h3>Choose Wisely!</h3>
+                    <ol class="numSize"> <!--Ordered list of buttons to allow selection of answers-->
+                        <li><button class="button" type="button" id="denyButton">Deny any knowledge and remain silent</button></li> <!-- The role tags help with accessibility-->
+                        <li><button class="button" type="button" id="truthButton">Tell the truth and admit you saw who it was</button></li>
+                        <li><button class="button" type="button" id="makeUpButton">Make up a story about seeing another prisoner with the tray</button></li>    
+                    </ol>
+                </aside>
+            </form>
+        </div>
+
+        <!-- Inventory section at the bottom of the page -->
+        <div class="bottomContent">
+            <!--This is the box on the left holding the main content-->
+            <section class="text-content">
+                <h2 id="textHeader">Inventory</h2>
+                <!-- Paragraph for displaying the inventory items -->
+                <p id="items"></p>
+            </section>
+            
+            <!--Footer section containing creator information at the bottom -->
+            <footer class="sidebar">
+                <p class="creators">We hope you really enjoyed playing this game!</p>
+                <br>
+                <p class="creators">Creators: Jon Roberts, Tim Reid, Cahal Donnelly, Declan McArdle, Rossa Mullan, Aaron Campbell</p>
+            </footer>
+        </div>
+
+        <!-- Pause Menu (Initially hidden) -->
+        <div id="pauseMenu" class="hidden" ?>
+            <div class="pauseContainer">
+                <h2>Game Paused</h2>
+                <!--Buttons for resuming the game or exiting and saving -->
+                <button id="resumeButton">Resume</button>
+                <button id="exitSaveButton">Exit & Save</button>
+
+                <!-- Accessibility features section-->
+                <section class="buttons"> 
+                        <h2 id="accessibilityHeader">To change certain features, </h2>
+                        <h2 id="accessibilityHeader">please select from the list below:</h2>
+                        <!-- Buttons for accessibility features-->
+                        <button class="button" type="button" id="increaseTextSize">Increase Text Size</button>
+                        <br>
+                        <button class="button" type="button" id="decreaseTextSize">Decrease Text Size</button>
+                        <br>
+                        <!-- Display current text size-->
+                        <div id="fontSizeDisplay">
+                            Current Text Size: <br>
+                            <span id="currentFontSize">28</span>px
+                        </div>
+                        <button class="button" type="button" id="changeContrast">Change Contrast</button>
+                        <br>
+                        <button class="button" type="button" id="changeFontStyle">Change Font Style</button>
+                </section>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Links to external JavaScript files-->
+    <script src="../JavaScriptFiles/accessibility.js" defer></script>
+    <script src="../JavaScriptFiles/contentUpdate.js" defer></script>
+    <script src="../JavaScriptFiles/navigation.js" defer></script>
+    <script src="../JavaScriptFiles/pauseButton.js" defer></script>
+    <script src="../JavaScriptFiles/inventory.js" defer></script>
+    <script src="../JavaScriptFiles/homepage.js" defer></script>
+    <script src="../JavaScriptFiles/config.js" defer></script>
+    <script src="../JavaScriptFiles/pauseButton.js"></script>
+</body>
+</html>

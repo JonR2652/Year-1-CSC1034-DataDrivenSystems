@@ -1,8 +1,8 @@
 let header = document.getElementById("textHeader"); // Creating variables for each text box so they can be accessed easily for the functions below
 let topImage = document.getElementById("topImage"); // variable so the image can be chnaged
 let siren = document.getElementById("sirenSound"); // variabble so that siren can be played
-let pickLockSound = new Audio("Tims Images/lockpick.mp3") // variable so that pick lock sound can be played
-let unlockSound = new Audio("Tims Images/unlocked.mp3") // variable so that unlock sound can be played
+let pickLockSound = new Audio("../audio/lockpick.mp3") // variable so that pick lock sound can be played
+let unlockSound = new Audio("../audio/unlocked.mp3") // variable so that unlock sound can be played
 let suspicion = 0; // suspicion initialised to 0
 let suspicionLevel = document.getElementById("suspicionLevel") // variable to count up the suspicion level
 let text = document.getElementById("text"); // variable to change the text
@@ -79,7 +79,7 @@ function gate() {
 function climb() {
     increaseSuspicion(60)
 
-    topImage.src = "Tims Images/arrested.jpg"
+    topImage.src = "../images/arrested.jpg"
     header.innerHTML = `Climbing Fence`;
     text.innerHTML = `You start climbing the fence and you hear <b>"HEY! Get Down"</b>.
     They release the dogs and they catch your leg and pull you down. They arrest you and put you in handcuffs and drag you away
@@ -168,7 +168,7 @@ function run() {
 
     flashEffect(text);
 
-    topImage.src = "Tims Images/prisoner running.jpg" //Image is changed when run function selected
+    topImage.src = "../images/prisoner running.jpg" //Image is changed when run function selected
     header.innerHTML = `Running...`;
     sidebar.innerHTML = `<span style="font-size: 25px; font-weight: bold;">You are now escaping!</span>`;
 
@@ -210,23 +210,25 @@ function sneak() {
     button3.style.display = "none";
     option3.style.display = "none";
 
-    button1.onclick = addItemToInventory(9)
+    
     button1.onclick = cutters;
+    button1.onclick = addItemToInventory(9)
     button2.onclick = gate;
 }
 
 function wait() {
     header.innerHTML = `Waiting for guard to turn around`;
     text.innerHTML = `The guard is now distracted and you need to look around the hut quickly. 
-    You find fence cutters but they are big do you want to pick them up?`;
+    You find bolt cutters but they are big do you want to pick them up?`;
 
-    button1.innerHTML = `Pick up fence cutters`; // need added to the inventory database
+    button1.innerHTML = `Pick up bolt cutters`; // need added to the inventory database
     button2.innerHTML = `Leave the bolt cutters and just go to the gate`;
     button3.style.display = "none";
     option3.style.display = "none";
 
-    button1.onclick = addItemToInventory(9);
+
     button1.onclick = cutters,
+    button1.onclick = addItemToInventory(9);
         button2.onclick = gate;
 }
 
@@ -259,7 +261,7 @@ function punch() {
 }
 
 function fence() {
-    topImage.src = "Tims Images/prison fence.jpg" //changes the image when the fence option is selected
+    topImage.src = "../images/prison fence.jpg" //changes the image when the fence option is selected
     header.innerHTML = `Fence`;
     text.innerHTML = `You made it to the fence without getting caught, now try escape by cutting the fence.`;
 

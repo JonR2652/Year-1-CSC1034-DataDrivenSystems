@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--This head contains info on how the web browser should interpret our code,
+    alongside linking our styling page and including our title.-->
+<head>
+    <link rel="stylesheet" href="../cssFiles/gamesummary.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Summary - Escaping Crumlin Gaol</title>
+</head>
+
+<body>
+<!-- This wrapper is used to group the title and nav links to the top of our page -->
+    <div class="wrapper">
+        <div class="banner">
+            Game Summary - Crumlin Gaol Escape
+        </div>
+        <!-- Simple nav to get around the site -->
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">More Games</a>
+        </nav>
+
+        <!-- Main content area to show the game summary -->
+        <div class="game-summary">
+            <section class="summary-header">
+                <h2>Congratulations! You have completed Crumlin Gaol Escape!</h2>
+            </section>
+        </div>
+
+        
+
+            <section class="summary-content">
+                <div class="left-column">
+                    <!-- Player's information and key stats -->
+                    <h3>Player's Information</h3>
+                    <p id="playerName"><strong>Player's Name:</strong> [Player Name]</p>
+                    <p id="dateOfCompletion"><strong>Date of Completion:</strong> [Date]</p>
+
+                    <h3>Performance Overview</h3>
+                    <p id="Completion Time"><strong>Completion Time:</strong> [Total Time Played]</p>
+                    <p id="Number of Attempts"><strong>Attempts:</strong> [Number of Attempts]</p>
+
+                    <h3>Achievements Unlocked</h3>
+                    <ul>
+                        <li id="Achievement 1">[Achievement 1] - [Description]</li>
+                        <li id="Achievement 2">[Achievement 2] - [Description]</li>
+                        <li id="Achievement 3">[Achievement 3] - [Description]</li>
+                    </ul>
+                </div>
+
+                <div class="right-column">
+                    <!-- Player's Stats -->
+                    <h3>Player's Stats</h3>
+                    <table>
+                        <tr>
+                            <th id="Difficulty Selected">Difficulty Selected</th>
+                            <td>[Difficulty]</td>
+                        </tr>
+                        <tr>
+                            <th id="Bum Scratches">Bum Scratches</th>
+                            <td>[Number]</td>
+                        </tr>
+                        <tr>
+                            <th id="Levels Completed">Levels Completed</th>
+                            <td>[Number]</td>
+                        </tr>
+                        <tr>
+                            <th id="Items Collected">Items Collected</th>
+                            <td>[Number]</td>
+                        </tr>
+                        <tr>
+                            <th id="Money Spent">Money Spent</th>
+                            <td>[Number]</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+            <div class="final-summary">
+                <p>Congratulations, [Player Name]! You've completed the game with a total playtime of [Time Played].</p>
+                <p>You made [Attempts] attempts at completing.</p>
+            </div>
+        </div>
+
+        <!-- Footer Information -->
+        <footer>
+            <p>We hope you really enjoyed playing this game!</p>
+            <p>Creators: Jon Roberts, Tim Reid, Cahal Donnelly, Declan McArdle, Rossa Mullan, Aaron Campbell</p>
+        </footer>
+    </div>
+
+        <script src="../JavaScriptFiles/gamesummary.js"></script> <!-- Link to the external JavaScript file -->
+        <script src="../JavaScriptFiles/login.js"></script>
+        <script src="../JavaScriptFiles/config.js"></script>
+    
+        
+</body>
+</html>

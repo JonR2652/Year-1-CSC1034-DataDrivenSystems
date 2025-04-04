@@ -48,3 +48,4 @@ async function endGame() {
         console.error("Error saving time:", error);
     }
 }
+

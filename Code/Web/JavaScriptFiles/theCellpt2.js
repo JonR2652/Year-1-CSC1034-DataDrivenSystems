@@ -31,7 +31,7 @@ function cellBreakout() {
 }
 
 function bribeGuard() {
-    image.setAttribute("src", "declansImages/bribeGuard.png");
+    image.setAttribute("src", "../images/bribeGuard.png");
     header.innerHTML = `Bribe the Guard`;
     text.innerHTML = `I wonder will the guard take a bribe?`;
 
@@ -47,7 +47,7 @@ function bribeGuard() {
     button3.disabled = true;
 
     function bribeGuardYes() {
-        image.setAttribute("src", "declansImages/bribeGuardRefuse.png");
+        image.setAttribute("src", "../images/bribeGuardRefuse.png");
         header.innerHTML = `Not today!`;
         text.innerHTML = `The guard has refused your bribe and has locked the cell door. You're stuck in the cell!`;
 
@@ -65,7 +65,7 @@ function bribeGuard() {
         button3.onclick = convinceGuard;
 
         function attackGuard() {
-            image.setAttribute("src", "declansImages/attackGuard.png");
+            image.setAttribute("src", "../images/attackGuard.png");
             header.innerHTML = `BOOM! POW! BANG!`;
             text.innerHTML = `You've decided to attack the guard! You must fight for your freedom, but if you lose, it's GAME OVER!`;
 
@@ -308,14 +308,14 @@ function pickLock() {
             .sort((a, b) => a.sort - b.sort)
             .map(({ value }) => value);
         const shuffledNumber = shuffledDigits.join("");
-
+        
         let attempts = 5;
 
         document.getElementById("attackTitle").innerText = `Random number: ${shuffledNumber}`;
 
         console.log("Correct Number (for testing):", randomNumber); // debugging 
 
-        function checkGuess() {
+        async function checkGuess() {
             const playerInput = document.getElementById("playerGuess").value;
 
             if (playerInput.length !== 4 || isNaN(playerInput)) {
@@ -333,8 +333,13 @@ function pickLock() {
                 subHeader.innerHTML = `Nice Work!`;
                 subText.innerHTML = `Time to move on!`;
                 // removeItemFromInventory(${playerID}, 3)
+                await delay(3000);
+                location.replace("hallway.html")
                 disableInput();
+                
                 return;
+
+
             }
 
             // lose
@@ -502,3 +507,7 @@ async function testQuery() {
         console.error("Error in test", error);
     }
 }
+function delay(milliseconds) {
+    return new Promise(resolve => {
+        setTimeout(resolve, milliseconds);
+    });}

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--This head contains info on how the web browser should interpret our code,
+        alongside linking our styling page and including our title.-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Fight Escape</title>
+
+    <!-- Internal CSS styling used for this page -->
+    <style>
+        /* High Contrast Mode - Style mode for users with visual impairments */
+        .high-contrast {
+            background-color: black;
+            color: white;
+        }
+
+        .high-contrast .banner {
+            background-color: #000000;
+            color: yellow;
+        }
+
+        .high-contrast nav {
+            background-color: #333333;
+            color: white;
+        }
+
+        .high-contrast .rulesAndRegulations {
+            background-color: #333333;
+            color: white;
+        }
+
+        .high-contrast .rulesAndRegulations1 {
+            background-color: #333333;
+            color: white;
+        }
+
+        .high-contrast .game-area {
+            background-color: #333333;
+            color: white;
+        }
+
+        .high-contrast .score-board {
+            background-color: #333333;
+            color: white;
+        }
+
+        .high-contrast nav a {
+            color: yellow;
+        }
+
+        .high-contrast .accessibilityFeatures {
+            background-color: #333333;
+            color: white;
+        }
+
+        /* Pause Menu styles */
+        /* Use of ChatGPT and Google for help and to enhance pause button */
+        #pauseMenu {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgb(74, 73, 55);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+    
+        #pauseMenu button {
+            background-color: black;
+            color: white;
+            border-style: solid;
+            border-radius: 10px;
+            border-color: rgb(110, 109, 95);
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    
+        #pauseMenu button:hover {
+            background-color: rgb(219, 219, 215);
+            color: black;
+            cursor: pointer;
+        }
+    
+        #pauseButton {
+            background-color: rgb(120, 120, 95);
+            color: rgb(219, 219, 215);
+            top: 50%;
+            left: 50%;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    
+        .hidden {
+            display: none;
+        }
+
+        /* Navigation bar styling */
+        nav {
+            background-color: rgb(120,120,95);
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 30px;
+        }
+    
+        nav a {
+            color: rgb(219,219,215);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Body and text styles */
+        body { 
+            background-color: rgb(110,109,95); 
+            color:  rgb(74,73,55); 
+            font-family: Arial, sans-serif;
+            font-size: 16px; 
+        }
+
+        /* Banner styling */
+        .banner {
+            background-color: rgb(74,73,55);
+            color: rgb(219,219,215);
+            font-size: 50px;
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 1px solid beige;
+        }
+
+        /* This styles the format for the margins and width of the web page */
+        .wrapper {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        /* Rules and regulations box styling (left side) */
+        .rulesAndRegulations {
+            position: absolute;
+            top: 120px;
+            left: 0px;
+            z-index: 1000;
+            padding: 10px;
+            margin: 10px;
+            background: rgb(219,219,215);
+            border-style: solid;
+            border-width: 5px;
+            border-color: rgb(74,73,55);
+            max-height: 400px; 
+            width: 250px; 
+            overflow-y: auto; 
+            word-wrap: break-word;
+        }
+
+        /* Rules and regulations box styling (right side) */
+        .rulesAndRegulations1 {
+            position: absolute;
+            top: 120px;
+            right: 0px;
+            z-index: 1000;
+            padding: 10px;
+            margin: 10px;
+            background: rgb(219,219,215);
+            border-style: solid;
+            border-width: 5px;
+            border-color: rgb(74,73,55);
+            max-height: 400px; 
+            width: 250px; 
+            overflow-y: auto; 
+            word-wrap: break-word; 
+        }
+
+        #rulesAndRegulationsHeading {
+            text-align: center;
+            text-decoration: underline;
+        }
+
+        /* Game area styling */
+        .game-area {
+            position: relative;
+            width: 800px;
+            height: 400px;
+            margin: 50px auto;            
+            border: 3px solid #000;
+            background: rgb(219,219,215);
+            text-decoration: underline;           
+            border-style: solid;
+            border-width: 5px;
+            border-color: rgb(74,73,55);
+        }
+
+        /* Player character styling */
+        .player {
+            position: absolute;
+            bottom: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: green;
+            border-radius: 50%;
+            left: 375px; 
+        }
+
+        /* Falling food styling */
+        .food {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: brown;
+            border-radius: 50%;
+            animation: fall 3s linear infinite;
+        }
+
+        /* Keyframes for falling animation */
+        @keyframes fall {
+            0% { top: -30px; }
+            100% { top: 400px; }
+        }
+
+        /* Scorebaord styling */
+        .score-board {
+            text-align: center;
+            font-size: 20px;
+            margin-top: -3%;
+            width: 200px;
+            height: 100px;
+            margin-left: auto; 
+            margin-right: auto; 
+            background: rgb(219,219,215);
+            border-style: solid;
+            border-width: 5px;
+            border-color: rgb(74,73,55);
+            }
+
+        /* Start button styling */
+        #startButton {
+            font-size: 50px;
+            text-align: center;
+            margin: 5px;
+            display: block; 
+            margin: 0 auto; 
+        }
+    </style>
+</head>
+<body>
+
+    <!--This wrapper is used to group the title and nav links to the top, also to format the webpage so that it can have margins and also allow us to centre any objects -->
+    <div class="wrapper">
+        <!--Banner section for the title-->
+        <div class="banner">
+            Welcome to Food Fight
+        </div>
+         <!--Simple nav to get around the site-->
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">More Games</a>
+            <button id="pauseButton">Pause Game</button>
+        </nav>
+
+        <br>
+
+        <!-- Button to start the mini game -->
+        <button id="startButton">Start Minigame</button>
+    </div>
+
+    <!-- Rules and regulations content (left side) -->
+    <div class="rulesAndRegulations">
+        <h3 id="rulesAndRegulationsHeading">Rules and Regulations</h3>
+        <ol>
+            <li><strong>Avoid falling food:</strong> Dodge the food falling from<br> above to stay in the game.</li>
+            <li><strong>You have 5 lives:</strong> Each time you get hit, you lose a life. Get hit 5 times, and it's game over!</li>
+            <li><strong>Movement controls:</strong> Use the <strong>left</strong> and <strong>right arrow keys</strong> to move your character and avoid the food.</li>
+            <li><strong>Time limit:</strong> You have a limited time to survive the food fight. Stay alert!</li>
+            <li><strong>Objective:</strong> Survive as long as you can and avoid getting hit by the falling food!</li>
+        </ol>
+    </div>
+
+    <!-- Rules and regulations content (right side) -->
+    <div class="rulesAndRegulations1">
+        <h3 id="rulesAndRegulationsHeading">Rules and Regulations</h3>
+        <ol>
+            <li><strong>Avoid falling food:</strong> Dodge the food falling from<br> above to stay in the game.</li>
+            <li><strong>You have 5 lives:</strong> Each time you get hit, you lose a life. Get hit 5 times, and it's game over!</li>
+            <li><strong>Movement controls:</strong> Use the <strong>left</strong> and <strong>right arrow keys</strong> to move your character and avoid the food.</li>
+            <li><strong>Time limit:</strong> You have a limited time to survive the food fight. Stay alert!</li>
+            <li><strong>Objective:</strong> Survive as long as you can and avoid getting hit by the falling food!</li>
+        </ol>
+    </div>
+
+    <!-- Game Area -->
+    <div class="game-area">
+        <div class="player" id="player"></div>
+    </div>
+
+    <!-- Scoreboard -->
+    <div class="score-board">
+        <p>Time Left: <span id="timer">30</span> seconds</p>
+        <p>Hits: <span id="hits">0</span></p>
+    </div>
+
+    <!-- Pause Menu (Initially hidden) -->
+    <div id="pauseMenu" class="hidden" ?>
+        <div class="pauseContainer">
+            <h2>Game Paused</h2>
+            <!--Buttons for resuming the game or exiting and saving -->
+            <button id="resumeButton">Resume</button>
+            <button id="exitSaveButton">Exit & Save</button>
+        
+            <!-- Accessibility features section-->
+            <h2 id="accessibilityHeader">To change certain features, </h2>
+            <h2 id="accessibilityHeader">please select from the list below:</h2>
+             <!-- Buttons for accessibility features-->
+            <button class="button" type="button" id="increaseTextSize">Increase Text Size</button>
+            <br>
+            <button class="button" type="button" id="decreaseTextSize">Decrease Text Size</button>
+            <br>
+             <!-- Display current text size-->
+            <div id="fontSizeDisplay">
+                Current Text Size: <br>
+                <span id="currentFontSize">28</span>px
+            </div>
+            <button class="button" type="button" id="changeContrast">Change Contrast</button>
+            <br>
+            <button class="button" type="button" id="changeFontStyle">Change Font Style</button>
+            </section>
+        </div>
+    </div>
+
+    <!-- Links to external JavaScript files-->
+    <script src="../JavaScriptFiles/minigame.js" defer></script>
+    <script src="../JavaScriptFiles/pauseButton.js" defer></script>
+    <script src="../JavaScriptFiles/accessibility.js" defer></script>
+</body>
+</html>

@@ -6,29 +6,29 @@
 async function getPlayerID() {
     let playerID = sessionStorage.getItem("PlayerID"); // Get PlayerID from session storage
     if (playerID) {
-        return playerID;
+        return playerID; //if found, return
     } else {
         console.error("PlayerID not found in session storage.");
-        return null;
+        return null; //if not found, return nothing.
     }
 }
 
 
 async function getSessionID() {
-    let sessionID = sessionStorage.getItem("SessionID"); // Get PlayerID from session storage
+    let sessionID = sessionStorage.getItem("SessionID"); // Get sessionID from session storage
     if (sessionID) {
-        return sessionID;
+        return sessionID; //return sessionID
     } else {
         console.error("PlayerID not found in session storage.");
-        return null;
+        return null; //if not found, return nothing
     }
 }
 
 
 
-
-//this function displays the players inventory
+//stores the last inventory
 let lastInventory = "";
+
 async function displayInventory() {
     //calls getPlayerID to get the playerID and display the correct inventory
     const playerID = await getPlayerID();
@@ -63,7 +63,7 @@ async function displayInventory() {
 
         }
 
-        let newInventory = "";
+        let newInventory = ""; //stores the new inventory
         //checks if the player has any items, if the player has no items
         //  it displays 'you have no items.'
         //otherwise it lists the items the user has.
@@ -74,12 +74,14 @@ async function displayInventory() {
             //  it displays 'you have no items.'
             //otherwise it lists the items the user has.
             let itemList = "<ul>";
+           //lists the items
             result.data.forEach(item => {
                 itemList += `<li>${item.ItemName} </li>`;
             });
             itemList += "</ul>";
             newInventory += itemList;
         }
+        //only updates the inventory display if there is a change between old and new inventory
         if (items.innerHTML !== newInventory) {
             items.innerHTML = newInventory;
         }
@@ -94,19 +96,8 @@ async function displayInventory() {
 }
 
 
-
-
-
-
-// Load inventory when the page loads. This grabs the playerID from session storage in the displayInventory function
-//document.addEventListener("DOMContentLoaded", () => {
-    //displayInventory();
-  //  setInterval(displayInventory, 5000)
-//
-//
-//}); 
-
-
+//loads the inventory when the page is loaded
+//checks every 5s if old inventory=new inventory
 document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
         displayInventory();
@@ -117,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-//debug purposes only, tests connection to db
+//debug purposes only, tests connection to database
 async function testQuery() {
 
 
@@ -150,11 +141,12 @@ async function testQuery() {
 
 //this function is to add items into a player's inventory
 //takes a parameter itemID to choose which item to add
-// example call; addItemToInventory(1);
+
 async function addItemToInventory(itemID) {
-    //check if player exists
+   
     let sessionID = sessionStorage.getItem("SessionID");
     let playerID = await getPlayerID();
+     //check if player exists
     if (!playerID) {
         console.error("PlayerID cannot be found.");
         return;
@@ -173,6 +165,7 @@ async function addItemToInventory(itemID) {
         });
         let result = await response.json();
         console.log("Item added to inventory:", result); // Debugging
+        
     } catch (error) {
         console.error("Error adding item to inventory:", error)
     }
@@ -200,7 +193,7 @@ async function removeItemFromInventory(itemID) {
         return;
     }
 
-
+    //removes item from player inventory
     let sqlQuery = `DELETE FROM playerInventory WHERE playerID = ${playerID} AND itemID = ${itemID}`;
 
     dbConfig.set('query', sqlQuery);
@@ -244,14 +237,14 @@ async function checkForItem(itemID) {
 
         if (result.success && Array.isArray(result.data) && result.data.length > 0) {
             console.log("Item exists in inventory.");
-            return true;
+            return true; //return true item is found
         } else {
             return false;
         }
 
     } catch (error) {
         console.error("Error checking for item:", error)
-        return false;
+        return false; //return false if the item is not found inside of the player's inventory
     }
 
 }
@@ -262,8 +255,9 @@ async function clearInventory() {
     let playerID = await getPlayerID();
     if (!playerID) {
         console.error("PlayerID cannot be found.");
-        return;
+        return; //if no playerid, console log error
     }
+    //deletes all inventory items from specific playerId
     let sqlQuery = `DELETE FROM playerInventory WHERE playerID = ${playerID};`
 
   

@@ -1,13 +1,15 @@
-checkLogin();
+
 //sniffhand and ponder are easter egg trackers. Sniff hand counts how many times the user has sniffed their hand
 //ponder is a one time activation
-ponder = 0;
-sniff = 0;
-pHolder = 1;
+let ponder = 0;
+let sniff = 0;
+
 
 //function to call overseer() to run code.
+let pHolder = 1;
+checkLogin();
 function overseer(button) {
-
+    
 
     switch (button) {
         //this first case is to identify which button was clicked
@@ -112,7 +114,7 @@ function overseer(button) {
                     break;
 
                 case 3:
-                    //escpape to next area
+                    //escape to next area
                     //locationreplace("");
                     delay(2500).then(() => {
                         //this goes to next area
@@ -141,6 +143,10 @@ function overseer(button) {
                 case 6:
                     //back to the cell to try again/ game over
                     //locationreplace("");
+                    delay(1000).then(() => {
+                        //this goes to next area
+                        location.replace("../htmlFiles/game Over.html");
+                    });
 
                     break;
 
@@ -195,7 +201,7 @@ function overseer(button) {
                     ponder++;
                     delay(2500).then(() => {
                         //this goes to next area
-                        location.replace("../htmlFiles/guardEncounter.html");
+                        location.replace("../htmlFiles/breakout.html");
                     });
 
 

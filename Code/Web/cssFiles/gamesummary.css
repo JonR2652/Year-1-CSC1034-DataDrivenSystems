@@ -1,0 +1,185 @@
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body { 
+    background-color: rgb(120, 120, 95); 
+    color:  rgb(74,73,55); 
+    font-family: Arial, sans-serif; 
+}
+
+.wrapper {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.banner {
+    background-color: rgb(74,73,55);
+    color: rgb(219,219,215);
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid beige;
+}
+
+nav {
+    background-color: rgb(120,120,95);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 30px;
+}
+nav a {
+    color: rgb(219,219,215);
+    text-decoration: none;
+    font-weight: bold;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Overall Structure */
+.game-summary {
+    max-width: 1000px;
+    margin: auto;
+    padding: 3px;
+    background-color: rgb(120, 120, 95);
+    border-radius: 8px;
+    border: 5px solid rgb(120, 120, 95);
+}
+
+/* Header */
+/* Make the .summary-header move continuously */
+.summary-header {
+    text-align: center;
+    padding: 20px;
+    background-color: rgb(120, 120, 95);
+    color: rgb(246, 246, 246);
+    font-size: 36px;
+    font-weight: bold;
+    white-space: nowrap; /* Prevent the text from breaking to a new line */
+    position: relative;
+    width: 100vw; /* Make the header the full width of the viewport */
+    animation: moveHeader 10s linear infinite; /* Apply the moveHeader animation */
+  }
+  
+  /* Keyframes to make the header move from right to left */
+  @keyframes moveHeader {
+    0% {
+      transform: translateX(100vw); /* Start the header off-screen to the right */
+    }
+    100% {
+      transform: translateX(-100vw); /* Move the header completely off-screen to the left */
+    }
+  }
+  
+/* Main Content */
+.summary-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+/* Left Column: Player's Information */
+.left-column {
+    flex: 1;
+    padding: 20px;
+    background: rgb(219,219,215);
+    border-radius: 8px;
+    border: 5px solid rgb(74,73,55);
+    font-size: 18px;
+}
+
+/* Add gaps */
+.left-column h3 {
+    margin-top: 20px; /* Add a gap before each section */
+    margin-bottom: 10px; /* Add space after each heading */
+}
+
+.left-column p, .left-column ul {
+    margin-bottom: 15px; /* Add a gap between paragraphs and list items */
+}
+
+.left-column ul {
+    padding-left: 20px; /* Indent the list items */
+}
+
+/* Right Column: Key Choices and Player's Stats */
+.right-column {
+    flex: 1;
+    padding: 20px;
+    background: rgb(219,219,215);
+    border-radius: 8px;
+    border: 5px solid rgb(74,73,55);
+    margin-left: 20px;
+    font-size: 18px;
+}
+
+/* Add margins */
+.right-column h3 {
+    margin-top: 20px; /* Space before each section header */
+    margin-bottom: 10px; /* Space after each section header */
+}
+
+.right-column ul {
+    margin-bottom: 15px; /* Space after the list of choices */
+}
+
+.right-column table {
+    margin-top: 15px; /* Add space before the table */
+}
+
+/* Table styling for player's stats */
+.right-column table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.right-column th, .right-column td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid rgb(74,73,55);
+}
+
+/* Style for the Final Summary Section */
+.final-summary {
+    background-color: rgb(219,219,215); /* Light background color for the summary */
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    border: 5px solid rgb(74,73,55);
+    margin-top: 20px; /* Space above the summary */
+    font-family: Arial, sans-serif; /* Clean font */
+  }
+  
+  .final-summary p {
+    font-size: 18px;
+    color:  rgb(219,219,215) /* Dark text for better readability */
+    line-height 1.6; /* Increase line spacing */
+  }
+  
+  /* Footer Styles */
+  footer {
+    background-color:rgb(74,73,55);  /* Dark background color for the footer */
+    color: rgb(219,219,215); /* White text color */
+    padding: 20px;
+    text-align: center; /* Center the text */
+    font-size: 16px;
+    margin-top: 40px; /* Space above the footer */
+  }
+  
+  footer p {
+    margin: 5px 0; /* Small margin between footer text lines */
+  }
+  
+  /* Footer creators' section */
+  footer p:last-child {
+    font-size: 14px; /* Slightly smaller font for the creators' names */
+    color: rgb(219,219,215); /* Light grey color for the creators' names */
+  }
+

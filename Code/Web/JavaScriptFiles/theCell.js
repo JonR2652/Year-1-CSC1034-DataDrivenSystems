@@ -14,13 +14,14 @@ let button3 = document.getElementById("button3");
 let image = document.getElementById("image");
 
 let checkedAreas = new Set()
+let alreadyRedirecting = false;
 
 
 
 
 
 function lookAround() {     // Function to display the text and buttons for the first set of selections
-    image.setAttribute("src", "declansImages/prisonCell.png");
+    image.setAttribute("src", "../images/prisonCell.jpg");
     header.innerHTML = `The Cell`;
     text.innerHTML = `ROLL CALL! You are in your cell before lunch, have a look around... See if you find anything... interesting.`;
 
@@ -37,7 +38,7 @@ function lookAround() {     // Function to display the text and buttons for the 
 }
 
 function underBed() {       // Function to display the text after user selects to check uner the bed
-    image.setAttribute("src", "declansImages/cashStack.png");
+    image.setAttribute("src", "../images/cashStack.png");
     header.innerHTML = `Under the bed`;
     text.innerHTML = `Your secret stash of cash you got from your friends on the outside! This might come in handy later...`;
 
@@ -48,9 +49,16 @@ function underBed() {       // Function to display the text after user selects t
     button2.innerHTML = `No`;
     button3.innerHTML = ``;
 
-    button1.onclick = bedDone;
+    button1.onclick = async function () {
+        await addItemToInventory(2);  // Assumes item ID 2 is for the cash stack
+        checkedAreas.add("bed");
+        bedDone();
+    }
 
-    button2.onclick = bedDone;
+    button2.onclick = async function () {
+        checkedAreas.add("bed");
+        bedDone();
+    }
 
     button3.disabled = true;
 
@@ -58,7 +66,7 @@ function underBed() {       // Function to display the text after user selects t
 }
 
 function behindToilet() {       //Function to display the text after user selects to check behind the toilet and sink
-    image.setAttribute("src", "declansImages/greyHat.png");
+    image.setAttribute("src", "../images/greyHat.png");
     header.innerHTML = `Behind the toilet and sink`;
     text.innerHTML = `You've found your old hat! It's covered in dust and cobwebs, but it's still in one piece...`;
     
@@ -69,9 +77,16 @@ function behindToilet() {       //Function to display the text after user select
     button2.innerHTML = `No`;
     button3.innerHTML = ``;
 
-    button1.onclick = toiletDone;
+    button1.onclick = async function () {
+        await addItemToInventory(1);  // Assumes item ID 2 is for the cash stack
+        checkedAreas.add("toilet");
+        toiletDone();
+    }
 
-    button2.onclick = toiletDone;
+    button2.onclick = async function () {
+        checkedAreas.add("toilet");
+        toiletDone();
+    }
 
     button3.disabled = true;
 
@@ -79,7 +94,7 @@ function behindToilet() {       //Function to display the text after user select
 }
 
 function underTable() {     // Function to display the text after user selects to check under the table
-    image.setAttribute("src", "declansImages/paperClip.png");
+    image.setAttribute("src", "../images/paperClip.png");
     header.innerHTML = `Under the table`;
     text.innerHTML = `Oh Interesting! It's a paperclip! This could come in handy later...`;
     
@@ -90,9 +105,16 @@ function underTable() {     // Function to display the text after user selects t
     button2.innerHTML = `No`;
     button3.innerHTML = ``;
 
-    button1.onclick = tableDone;
-
-    button2.onclick = tableDone;
+    button1.onclick = async function () {
+        await addItemToInventory(3);  // Assumes item ID 2 is for the cash stack
+        checkedAreas.add("table");
+        tableDone();
+    }
+    
+    button2.onclick = async function () {
+        checkedAreas.add("table");
+        tableDone();
+    }
 
     button3.disabled = true;
 
@@ -100,10 +122,10 @@ function underTable() {     // Function to display the text after user selects t
 }
 
 function bedDone() {
-    image.setAttribute("src", "declansImages/prisonCell.png");
+    image.setAttribute("src", "../images/prisonCell.jpg");
     header.innerHTML = `The Cell`;
     text.innerHTML = `You've had a look under the bed and found you secret stash... would you like to check anywhere else?`;
-    // addItemToInventory(${playerID}, 2)
+    
 
     subHeader.innerHTML = `You've found your stash of cash!`;
     subText.innerHTML = `Now that you have found your money, try looking somewhere else...`;
@@ -120,19 +142,21 @@ function bedDone() {
     button3.onclick = underTable;
     
     console.log("bedDone function");
+    checkAllAreas();
 }
 
 function toiletDone() {
-    image.setAttribute("src", "declansImages/prisonCell.png");
+    image.setAttribute("src", "../images/prisonCell.jpg");
     header.innerHTML = `The Cell`;
     text.innerHTML = `You've had a look behind the toilet and found your long lost hat... would you like to check anywhere else?`;
-    // addItemToInventory(${playerID}, 1)
+   
 
     button1.innerHTML = `Under the bed`;
     button2.innerHTML = `Behind the toilet and sink`;
     button3.innerHTML = `Under the table`;
 
     button1.onclick = underBed;
+    
 
     button2.onclick = behindToilet;
 
@@ -140,13 +164,14 @@ function toiletDone() {
     button3.onclick = underTable;
 
     console.log("toiletDone function");
+    checkAllAreas();
 }
 
 function tableDone() {
-    image.setAttribute("src", "declansImages/prisonCell.png");
+    image.setAttribute("src", "../images/prisonCell.jpg");
     header.innerHTML = `The Cell`;
     text.innerHTML = `You've had a look under the table and found a paper clip... have you checked everywhere?`;
-    // addItemToInventory(${playerID}, 3)
+    
 
     button1.innerHTML = `Under the bed`;
     button2.innerHTML = `Behind the toilet and sink`;
@@ -160,15 +185,47 @@ function tableDone() {
     button3.onclick = underTable;
 
     console.log("tableDone function");
+    checkAllAreas();
+}
+
+
+
+function checkAllAreas() {
+    if (
+        checkedAreas.has("bed") &&
+        checkedAreas.has("toilet") &&
+        checkedAreas.has("table")
+        
+    ) {
+        header.innerHTML = `Time to move on...`;
+        text.innerHTML = `You've searched the cell thoroughly. Let's head to the cafeteria.`;
+
+        subHeader.innerHTML = ``;
+        subText.innerHTML = ``;
+
+        button1.innerHTML = ``;
+        button2.innerHTML = ``;
+        button3.innerHTML = ``;
+
+        button1.disabled = true;
+        button2.disabled = true;
+        button3.disabled = true;
+
+        setTimeout(() => {
+            window.location.href = "cafeteriaSection4.html";
+        }, 3000);
+    }
 }
 
 lookAround()
-
 // 3 options: check under bed, check nehind toilet and sink, check under the table
 
 // Check under bed: find _____ ---> add to inventory
 // Check behind toilet and sink: find _____ ---> add to inventory
 // Check under the table: find _____ ---> add to inventory
 
+//1 is hat
+//2 is money
+//3 is paperclip
 
 // write me a sql script to add 'item 1' and 'item 2' to a table called 'item info' with the attributes 'itemID' 'itemName' where 'itemID' is a primary key
