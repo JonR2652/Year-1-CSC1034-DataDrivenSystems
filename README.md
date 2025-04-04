@@ -8,8 +8,7 @@ through phpMyAdmin in SQL, which tracks data
 such as player details, login/ registration,
 individual player inventory, game save, 
 items and achievements. Minigames are encouraged
-throughout, as well as having functional
-buttons.
+throughout.
 
 Each member has a section or room to design
 and make. Our story is a Prison Break Story.
@@ -20,7 +19,9 @@ cell) -> A hallway -> Courtyard / Exercise area
 -> escape.
 
 My aspect of the development was the 
-Hallway and Inventory table in our database.
+Hallway and Inventory table in our database, in which
+i added an additional room named "guardEncounter.html" 
+for a minigame.
 
 THE HALLWAY:
 For the hallway, I decided to have an encounter
